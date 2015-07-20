@@ -53,6 +53,12 @@
             
             document.addEventListener("deviceready", onDeviceReady, false);
             
+            document.addEventListener("backbutton", function() {
+            	
+            	navigator.app.exitApp();
+        		
+        	}, false);
+            
             var db;
             
             var socialID = '';

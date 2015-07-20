@@ -25,27 +25,44 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
         <link rel="stylesheet" type="text/css" href="css/main.css" />
         <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="css/matchDetails.css" />
         <meta name="msapplication-tap-highlight" content="no" />
         <title>Playinga</title>
         <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
         <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/jquery.popupoverlay.js"></script>
     </head>
     <body >
         <div ng-controller="MatchList" class="site-wrapper">
         
        		<div id="addMatchPopup" class="well" style="max-width:44em;">
-			    <h3>Enter the Match Result</h3>
+			    <h3>Enter the Matchid & Password</h3>
 			    <input type="text" id="matchId" name="matchId" value="" placeholder="Match Id">
 			    <input type="text" id="matchPassword" name="matchPassword" value="" placeholder="Password">
 			    <br>
-			    <button class="btn btn-blue" onClick = "popupYes(3)">End Match</button>
-			    <button class="btn btn-blue margin-L10" onClick = "popupNo(3)">Cancel</button>
+			    <button class="btn btn-blue" onClick = "popupYes(3)">Add Match</button>
+			    <button class="btn btn-blue margin-L10" onClick = "hidePopup('#addMatchPopup')">Cancel</button>
+			</div>
+			
+			<div id="logoutConfirmPopup" class="well" style="max-width:44em;">
+			    <h3>Are u sure do want to logout ??</h3>
+			    <br>
+			    <button class="btn btn-blue" onClick = "logout()">Log out</button>
+			    <button class="btn btn-blue margin-L10" onClick = "hidePopup('#logoutConfirmPopup')">Cancel</button>
 			</div>
         
             <header class="topBar"> <a class="logo-symbol" href="javascript:;"></a>
-            	<img alt="add" src="img/img_add_match_icon.png" style="float: right; height: 25px; width: 25px; padding: 12px;">
-                <img alt="log out" src="img/img_logout_icon.png" style="float: right; height: 25px; width: 25px; padding: 12px;">
+            	
+                <img alt="log out" src="img/img_logout_icon.png" 
+                	style="float: right; height: 25px; width: 25px; padding: 12px;"
+                	onClick="showPopup('#logoutConfirmPopup')">
+                	
+               	<img alt="add" src="img/img_add_match_icon.png" 
+            		style="float: right; height: 25px; width: 25px; padding: 12px;"
+            		onClick="showPopup('#addMatchPopup')">
+            		
                 <h1 class="logo-title">Playinga</h1>
+                
             </header>
             
             

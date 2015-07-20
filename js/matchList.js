@@ -26,7 +26,8 @@ function onDeviceReady()
     
     db = window.sqlitePlugin.openDatabase({name: "playingaDB"});
     
-    
+    $("#addMatchPopup").popup();
+    $("#logoutConfirmPopup").popup();
     
     db.transaction(function(tx) {
     
@@ -663,11 +664,35 @@ function MatchList($scope)
     
 }
 
-function logout(){
+function showPopup(popupId){
+	$(popupId).popup('show');
+}
 
-	if(type){
+function hidePopup(popupId){
+	$(popupId).popup('hide');
+}
+
+function logout(){
+	
+	db.transaction(function(tx) {
 		
-	}
+		tx.executeSql("DELETE FROM "+userTableName,[],function(){},errorHandler);
+		tx.executeSql("DELETE FROM "+matchesTableName,[],function(){},errorHandler);
+		tx.executeSql("DELETE FROM "+matchParticipants,[],function(){},errorHandler);
+		tx.executeSql("DELETE FROM "+matchSquadTable,[],function(){},errorHandler);
+		
+		tx.executeSql("DELETE FROM "+matchAttributes,[],function(){},errorHandler);
+		tx.executeSql("DELETE FROM "+fullScoreTable,[],function(){},errorHandler);			
+		tx.executeSql("DELETE FROM "+fullScoreInfoTable,[],function(){},errorHandler);
+		tx.executeSql("DELETE FROM "+fullScoreWicketTable,[],function(){},errorHandler);
+		tx.executeSql("DELETE FROM "+ballbyballTable,[],function(){
+			
+			window.location.href = "index.html";
+			
+		},errorHandler);
+		
+	},errorHandler);
+	
 		
 }
 
