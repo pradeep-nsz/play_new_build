@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Playinga</title>
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+    </head>
+    <body >
+        <div ng-controller="MatchList" class="site-wrapper">
+        
+       		<div id="addMatchPopup" class="well" style="max-width:44em;">
+			    <h3>Enter the Match Result</h3>
+			    <input type="text" id="matchId" name="matchId" value="" placeholder="Match Id">
+			    <input type="text" id="matchPassword" name="matchPassword" value="" placeholder="Password">
+			    <br>
+			    <button class="btn btn-blue" onClick = "popupYes(3)">End Match</button>
+			    <button class="btn btn-blue margin-L10" onClick = "popupNo(3)">Cancel</button>
+			</div>
+        
+            <header class="topBar"> <a class="logo-symbol" href="javascript:;"></a>
+            	<img alt="add" src="img/img_add_match_icon.png" style="float: right; height: 25px; width: 25px; padding: 12px;">
+                <img alt="log out" src="img/img_logout_icon.png" style="float: right; height: 25px; width: 25px; padding: 12px;">
+                <h1 class="logo-title">Playinga</h1>
+            </header>
+            
+            
+            
+            <div id="loader" style= "height:100%; width:100%; background-color:rgb(255, 255,255);
+	 				z-index:1000;background-image:url('img/hexa-loader.gif'); 
+					background-repeat: no-repeat;
+					background-position:center center;"> 
+			</div>
+            
+            <nav class="main-navs" ng-init="active=1">
+                <a href="" title="" class="today active" rel="tab1" ng:click="active=1" ng:class="{'active' : active==1 }" style="width:15%;">
+                    <hr />Today<span class="tab-match-count {{today.length <= 0 && 'hide' || ''}}" >{{today.length}}</span>
+                </a>
+                <a href="" title="" class="upcoming" rel="tab2" ng:click="active=2" ng:class="{'active' : active==2 }" style="width:25%;">
+                    <hr />Upcoming<span class="tab-match-count {{upcoming.length <= 0 && 'hide' || ''}}" >{{upcoming.length}}</span>
+                </a>
+                <a href="" title="" class="past" rel="tab3" ng:click="active=3" ng:class="{'active' : active==3 }" style="width:15%;">
+                    <hr />Past<span class="tab-match-count {{past.length <= 0 && 'hide' || ''}}" >{{past.length}}</span>
+                </a>
+            </nav>
+			
+            <section class="contentSection today-matches" ng:show="active == 1">
+                <div ng-repeat="tod in today" class="match-listItem" id="{{tod.match_id}}" onclick="javascript:goToMatchDetails(this.id,1)">
+                    <div  class="match-item-header"><h3>{{tod.name}}</h3>
+                        <div class="today-match-leagueName {{tod.tournament_name =='' && 'hide' || ''}}"><img src="img/spacer.gif" class="icon-todayLeagueName" alt="" />{{tod.tournament_name}}</div>
+                    </div>
+                    <div class="match-item-details">
+                        <div class="match-item-team-logos">
+<!--                         {{tod.playerimage1}} -->
+                            <div class="teamPlayers01 team1BdrClr {{tod.play_type <= 1 && 'hide' || ''}}"
+                            	style="border-color: {{tod.jerseyColor1}}">
+                                <div class="player01"><img src="{{tod.playerimage1}}" width="60" height="60" alt="{{tod.playername1}}"></div>
+                                <div class="player02 {{tod.playername2 == '' && 'hide' || ''}}"><img src="{{tod.playerimage2}}" width="60" height="60" alt="{{tod.playername2}}"></div>
+                            </div>
+                            <div class="teamLogo team1BdrClr {{tod.play_type > 1 && 'hide' || ''}}"
+                            	style="border-color: {{tod.jerseyColor1}}"><img src="{{tod.playerimage1}}" alt="{{tod.playername1}}" /></div>
+                            <span>Vs</span>
+                            <div class="teamPlayers02 team2BdrClr {{tod.play_type <= 1 && 'hide' || ''}}"
+                            	style="border-color: {{tod.jerseyColor2}}">
+                                <div class="player01"><img src="{{tod.playerimage3}}" width="60" height="60" alt="{{tod.playername3}}"></div>
+                                <div class="player02 {{tod.playername4 == '' && 'hide' || ''}}"><img src="{{tod.playerimage4}}" width="60" height="60" alt="{{tod.playername4}}"></div>
+                            </div>
+                            <div class="teamLogo team2BdrClr {{tod.play_type > 1 && 'hide' || ''}}"
+                            	style="border-color: {{tod.jerseyColor2}}"><img src="{{tod.playerimage3}}" alt="{{tod.playername3}}" /></div>
+                            <div class="match-item-sportType">
+<!--                             	<img src="img/spacer.gif" class="icon-sportType21 icon-{{tod.game_name}}" alt="" /> -->
+                            	<i class="icon-{{tod.game_name}}-md icon-md">{{tod.matchFormat}}</i>
+                           	</div>
+                        </div>
+                        <div class="match-item-summary">
+                            <div class="today-match-summary-arrow"></div>
+                            <ul>
+                                <li><span class="match-summary-teamname">{{tod.playername1}}</span><span class="match-summary-teamname {{tod.playername2 == '' && 'hide' || ''}}">, {{tod.playername2}}</span> Vs <span class="match-summary-teamname">{{tod.playername3}}</span><span class="match-summary-teamname {{tod.playername4 == '' && 'hide' || ''}}">, {{tod.playername4}}</span></li>
+                                <li class="today-match-time"><img src="img/spacer.gif" class="icon-todayTime" alt="" /> {{tod.formatted_date | date:'hh:mm'}}<sup>{{tod.formatted_date | date:'a'}}</sup></li>
+                                <li class="today-match-location"><img src="img/spacer.gif" class="icon-todayLocation" alt="" /> {{tod.venue}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="contentSection today-matches" ng:show="active == 2">
+                <div ng-repeat="upc in upcoming" class="match-listItem" id="{{upc.match_id}}" onclick="javascript:goToMatchDetails(this.id,2)">
+                    <div class="match-item-header"><h3>{{upc.name}}</h3>
+                        <div class="today-match-leagueName {{upc.tournament_name =='' && 'hide' || ''}}"><img src="img/spacer.gif" class="icon-todayLeagueName" alt="" />{{upc.tournament_name}}</div>
+                    </div>
+                    <div class="match-item-details">
+                        <div class="match-item-team-logos">
+                            <div class="teamPlayers01 team1BdrClr {{upc.play_type <= 1 && 'hide' || ''}}"
+                            	style="border-color: {{upc.jerseyColor1}}">
+                                <div class="player01"><img src="{{upc.playerimage1}}" width="60" height="60" alt="{{upc.playername1}}"></div>
+                                <div class="player02 {{upc.playername2 == '' && 'hide' || ''}}"><img src="{{upc.playerimage2}}" width="60" height="60" alt="{{upc.playername2}}"></div>
+                            </div>
+                            <div class="teamLogo team1BdrClr {{upc.play_type > 1 && 'hide' || ''}}"
+                            	style="border-color: {{upc.jerseyColor1}}">
+                            	<img src="{{upc.playerimage1}}" alt="{{upc.playername1}}" />
+                           	</div>
+                            <span>Vs</span>
+                            <div class="teamPlayers02 team2BdrClr {{upc.play_type <= 1 && 'hide' || ''}}"
+                            	style="border-color: {{upc.jerseyColor2}}">
+                                <div class="player01"><img src="{{upc.playerimage3}}" width="60" height="60" alt="{{upc.playername3}}"></div>
+                                <div class="player02 {{upc.playername4 == '' && 'hide' || ''}}"><img src="{{upc.playerimage4}}" width="60" height="60" alt="{{upc.playername4}}"></div>
+                            </div>
+                            <div class="teamLogo team2BdrClr {{upc.play_type > 1 && 'hide' || ''}}"
+                            	style="border-color: {{upc.jerseyColor2}}"><img src="{{upc.playerimage3}}" alt="{{upc.playername3}}" /></div>
+                            <div class="match-item-sportType">
+<!--                             	<img src="img/spacer.gif" class="icon-sportType21 icon-{{upc.game_name}}" alt="" /> -->
+                            	<i class="icon-{{upc.game_name}}-md icon-md">{{upc.matchFormat}}</i>
+                           	</div>
+                        </div>
+                        <div class="match-item-summary">
+                            <div class="today-match-summary-arrow"></div>
+                            <ul>
+                                <li><span class="match-summary-teamname">{{upc.playername1}}</span><span class="match-summary-teamname {{upc.playername2 == '' && 'hide' || ''}}">, {{upc.playername2}}</span> Vs <span class="match-summary-teamname">{{upc.playername3}}</span><span class="match-summary-teamname {{upc.playername4 == '' && 'hide' || ''}}">, {{upc.playername4}}</span></li>
+                                <li class="today-match-time"><img src="img/spacer.gif" class="icon-todayTime" alt="" /> {{upc.formatted_date | date:'MMM dd hh:mm'}}<sup>{{upc.formatted_date | date:'a'}}</sup></li>
+                                <li class="today-match-location"><img src="img/spacer.gif" class="icon-todayLocation" alt="" /> {{upc.venue}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--<div ng-repeat="upc in upcoming" class="match-listItem" onclick="javascript:goToMatchDetails()">
+                    <div  class="match-item-header"><h3>{{upc.name}}</h3>
+                        <div class="today-match-leagueName {{upc.tournament_name =='' && 'hide' || ''}}"><img src="img/spacer.gif" class="icon-todayLeagueName" alt="" />{{upc.tournament_name}}</div>
+                    </div>
+                    <div class="match-item-details">
+                        <div class="match-item-team-logos">
+                            <div class="teamLogo team1BdrClr"><img src="img/teamlogo01.png" alt="Team Name01" /></div>
+                            <span>Vs</span>
+                            <div class="teamLogo team2BdrClr"><img src="img/teamlogo02.png" alt="Team Name02" /></div>
+                            <div class="match-item-sportType"><img src="img/spacer.gif" class="icon-sportType21 icon-{{upc.game_name}}" alt="" /></div>
+                        </div>
+                        <div class="match-item-summary">
+                            <div class="today-match-summary-arrow"></div>
+                            <ul>
+                                <li><span class="match-summary-teamname">Chennai Super Kings</span> Vs <span class="match-summary-teamname">Delhi Dare Devils</span></li>
+                                <li class="today-match-time"><img src="img/spacer.gif" class="icon-todayTime" alt="" /> {{upc.formatted_date | date:'MMM dd hh:mm'}}<sup>{{upc.formatted_date | date:'a'}}</sup></li>
+                                <li class="today-match-location"><img src="img/spacer.gif" class="icon-todayLocation" alt="" /> {{upc.venue}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>-->
+            </section>
+            <section class="contentSection today-matches" ng:show="active == 3">
+                <div ng-repeat="pst in past" class="match-listItem" id="{{pst.match_id}}" onclick="javascript:goToMatchDetails(this.id,3)">
+                    <div class="match-item-header"><h3>{{pst.name}}</h3>
+                        <div class="today-match-leagueName {{pst.tournament_name =='' && 'hide' || ''}}"><img src="img/spacer.gif" class="icon-todayLeagueName" alt="" />{{pst.tournament_name}}</div>
+                    </div>
+                    <div class="match-item-details">
+                        <div class="match-item-team-logos">
+                            <div class="teamPlayers01 team1BdrClr {{pst.play_type <= 1 && 'hide' || ''}}"
+                            	style="border-color: {{pst.jerseyColor1}}">
+                                <div class="player01"><img src="{{pst.playerimage1}}" width="60" height="60" alt="{{pst.playername1}}"></div>
+                                <div class="player02 {{pst.playername2 == '' && 'hide' || ''}}"><img src="{{pst.playerimage2}}" width="60" height="60" alt="{{pst.playername2}}"></div>
+                            </div>
+                            <div class="teamLogo team1BdrClr {{pst.play_type > 1 && 'hide' || ''}}"
+                             	style="border-color: {{pst.jerseyColor1}}"><img src="{{pst.playerimage1}}" alt="{{pst.playername1}}" /></div>
+                            <span>Vs</span>
+                            <div class="teamPlayers02 team2BdrClr {{pst.play_type <= 1 && 'hide' || ''}}"
+                            	style="border-color: {{pst.jerseyColor2}}">
+                                <div class="player01"><img src="{{pst.playerimage3}}" width="60" height="60" alt="{{pst.playername3}}"></div>
+                                <div class="player02 {{pst.playername4 == '' && 'hide' || ''}}"><img src="{{pst.playerimage4}}" width="60" height="60" alt="{{pst.playername4}}"></div>
+                            </div>
+                            <div class="teamLogo team2BdrClr {{pst.play_type > 1 && 'hide' || ''}}"
+                            	style="border-color: {{pst.jerseyColor2}}"><img src="{{pst.playerimage3}}" alt="{{pst.playername3}}" /></div>
+                            <div class="match-item-sportType">
+<!--                             	<img src="img/spacer.gif" class="icon-sportType21 icon-{{pst.game_name}}" alt="" /> -->
+                            	<i class="icon-{{pst.game_name}}-md icon-md">{{pst.matchFormat}}</i>
+                           	</div>
+                        </div>
+                        <div class="match-item-summary">
+                            <div class="today-match-summary-arrow"></div>
+                            <ul>
+                                <li><span class="match-summary-teamname">{{pst.playername1}}</span><span class="match-summary-teamname {{pst.playername2 == '' && 'hide' || ''}}">, {{pst.playername2}}</span> Vs <span class="match-summary-teamname">{{pst.playername3}}</span><span class="match-summary-teamname {{pst.playername4 == '' && 'hide' || ''}}">, {{pst.playername4}}</span></li>
+                                <li class="today-match-time"><img src="img/spacer.gif" class="icon-todayTime" alt="" /> {{pst.formatted_date | date:'MMM dd hh:mm'}}<sup>{{pst.formatted_date | date:'a'}}</sup></li>
+                                <li class="today-match-location"><img src="img/spacer.gif" class="icon-todayLocation" alt="" />{{pst.venue}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="match-item-details">
+                        <div class="match-item-team-logos">
+                            <div class="teamLogo team1BdrClr"><img src="img/teamlogo01.png" alt="Team Name01" /></div>
+                            <span>Vs</span>
+                            <div class="teamLogo team2BdrClr"><img src="img/teamlogo02.png" alt="Team Name02" /></div>
+                            <div class="match-item-sportType"><img src="img/spacer.gif" class="icon-sportType21 icon-{{pst.game_name}}" alt="" /></div>
+                        </div>
+                        <div class="match-item-summary">
+                            <div class="today-match-summary-arrow"></div>
+                            <ul>
+                                <li><span class="match-summary-teamname">Chennai Super Kings</span> Vs <span class="match-summary-teamname">Delhi Dare Devils</span></li>
+                                <li class="today-match-time"><img src="img/spacer.gif" class="icon-todayTime" alt="" /> {{pst.formatted_date | date:'MMM dd hh:mm'}}<sup>{{pst.formatted_date | date:'a'}}</sup></li>
+                                <li class="today-match-location"><img src="img/spacer.gif" class="icon-todayLocation" alt="" />{{pst.venue}}</li>
+                            </ul>
+                        </div>
+                    </div>-->
+                </div>
+            </section>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/iscroll.js"></script>
+        <script  type="text/javascript" src="js/general.js"></script>
+        <script  type="text/javascript" src="js/matchList.js"></script>
+        
+    </body>
+</html>

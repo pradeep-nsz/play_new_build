@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="site-wrapper hide">
+            <section class="login">
+                <h1 class="login-logo">Playinga - Let the games begin!</h1>
+                <fieldset>
+                    <legend>Sign in with</legend>
+                    <a href="javascript:;" class="login-fbBtn"  onclick="fbLogin()">
+                        <img src="img/spacer.gif" alt="Facebook" class="icon_21 icon-loginFB">Facebook
+                    </a>
+                    <a href="javascript:;" id="googleLoginButton" class="login-gpBtn">
+                        <img src="img/spacer.gif" alt="Google Plus" class="icon_21 icon-loginGPlus">Google
+                    </a>
+                </fieldset>
+            </section>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <!--<script type="text/javascript" src="js/index.js"></script>-->
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/jquery.retina.js"></script>
+        <script type="text/javascript" src="js/googleLogin.js"></script>
+        <script type="text/javascript" src="js/general.js"></script>
+        <script>
+            
+            document.addEventListener("deviceready", onDeviceReady, false);
+            
+            var db;
+            
+            var socialID = '';
+            
+            var type = 0;
+            
+            $(document).ready(function()
+            {
+                $('img').retina();
+                              
+                var $loginButton = $('#googleLoginButton a');
+
+                $('#googleLoginButton').click(function(){
+                    //callGoogle();
+                    googleapi.authorize({
+                        client_id: '296891144839-lpf6s5b2p6m5qhqlm9n2ec501src0h7u.apps.googleusercontent.com',
+                        client_secret: 'pTNlqvo0Oz6yTa2A5sE-j5Wx',
+                        redirect_uri: 'http://localhost',
+                        scope: 'https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile'
+                    }).done(function(data) {
+                            //accessToken=data.access_token;
+                            // alert(accessToken);
+                            // $loginStatus.html('Access Token: ' + data.access_token);
+                            //console.log(data.access_token);
+                            //console.log(JSON.stringify(data));
+                    }).fail(function(data) {
+
+                    });
+                    
+                    //authenticateUser("113421935849290213785", 2);
+                });
+            });
+            
+            function onDeviceReady()
+            {
+                //alert("dsfs");
+                db = window.sqlitePlugin.openDatabase({name: "playingaDB"});
+                
+                db.transaction(function(tx) {
+                
+                    tx.executeSql("SELECT count(*) as cnt FROM sqlite_master WHERE type='table' AND name='"+userTableName+"';", [], function(tx, res) {
+                                        
+                        if(res.rows.item(0).cnt <= 0)
+                        {
+                            tx.executeSql('CREATE TABLE IF NOT EXISTS ' + userTableName + ' (id integer primary key, social_id text, user_id integer, type integer, access_key text, is_active integer, last_login DATETIME DEFAULT CURRENT_TIMESTAMP)',[], nullHandler, errorHandler);
+                                  
+                            $(".site-wrapper").show();
+                        }
+                        else
+                        {
+                            tx.executeSql("select id, access_key from " + userTableName + " where is_active=1;", [], function(tx, res) {
+                                if(res.rows.length <= 0)
+                                {
+                                    //alert("nothing");
+                                    $(".site-wrapper").show();
+                                }
+                                else
+                                {
+                                    //alert("exit");
+                                    window.location.href = "matchList.html";
+                                }
+                            }, errorHandler);
+                        }
+                        
+                        
+                    }, errorHandler);
+                               
+                }, errorHandler);
+                
+        
+                //navigator.splashscreen.show();
+            }
+                               
+           
+  
+            var fbLogin = function () {
+                
+              if (!window.cordova) {
+                  var appId = prompt("Enter FB Application ID", "");
+                  facebookConnectPlugin.browserInit(appId);
+              }
+              
+              facebookConnectPlugin.login( ["email"],
+                  function (response) {
+                  facebookConnectPlugin.api( "me/?fields=id,email", [],
+                    function (response) {
+
+                        authenticateUser(response.id, 1);
+                        socialID = response.id;
+                        type = 1;
+                                            
+//                         alert(response.id);
+                                            
+                    });
+              });
+              
+//               authenticateUser("955667387785332", 1);
+              
+//               authenticateUser("954557127896358", 1);
+              
+              
+          }
+        
+          function authenticateUser(socialId, type)
+          {
+          
+          	  socialID = socialId;
+          	  
+          	  this.type = type;
+          
+              $(".site-wrapper").hide();
+              var soapRequest = soapMsgStart + '<socialLogin xmlns="'+webserviceURL+'"> \
+              <social_id>' + socialId + '</social_id> \
+              <type>' + type + '</type> \
+              </socialLogin> \ ' + soapMsgEnd;
+              
+              //console.log("google Social Id "+socialId);
+              
+              //alert(soapRequest);
+              
+              $.ajax({
+                 type: "POST",
+                 url: webserviceURL,
+                 contentType: "text/xml",
+                 dataType: "xml",
+                 data: soapRequest,
+                 success: authenticateSuccess,
+                 error: authenticateError
+             });
+        }
+        
+        function authenticateSuccess(data, status, req)
+        {
+            if (status == "success")
+            {
+                //alert($(req.responseXML).text()+" Success");
+                
+                //console.log($(req.responseXML));
+                
+                createMatchTable();
+                
+                var responseXML = $(req.responseXML);
+                
+                var accessKey = responseXML.find("accessKey").text();
+                
+                var userId = responseXML.find("userid").text();
+                
+//                 alert("req.responsetext " +req.responseText);
+
+				console.log(req.responseText);
+                
+                if(accessKey == "")
+                {
+                    alert("Invalid User");
+                    $(".site-wrapper").show();
+                }
+                else
+                {
+                    var parametersList = ["match_id", "game_id", "type_id", "play_type", "name", "created_by",
+                                          "created_by_type", "match_date", "result", "full_address",
+                                          "lat", "long", "tournamentName", "gameName", "tournamentPhotoUrl",
+                                          "match_status", "player_info", "require_partner", "image_path",
+                                          "score_edit", "matchParticipantIds", "inn_type", "match_format"];
+                    
+                    //var parametersList = ["match_id"];
+                    var matchVals = new Array();
+                    
+                    var arrLoop = 0;
+                    
+                    var matchesCount = responseXML.find("match_id").length;
+                    
+                    for(var arrayLoop = 0; arrayLoop < matchesCount; arrayLoop++)
+                    {
+                        matchVals[arrayLoop] = new Array();
+                    }
+                    
+                    $.each(parametersList, function(index, value){
+                           
+                        var incLoop = 0;
+                        
+                        responseXML.find(value).each(function(){
+                                                     
+                            matchVals[incLoop][value] = $(this).text();
+                            
+                            //alert(matchVals[incLoop][value]);
+                            
+                            matchVals[incLoop][value] = matchVals[incLoop][value].replace(/'/g,"''");
+                            
+                            if(value == "inn_type" && matchVals[incLoop]["inn_type"] == "")                            
+                            	matchVals[incLoop]["inn_type"] = 0;
+                            
+//                             alert($(this).text() + " " +incLoop+" "+ value);
+//                             console.log($(this).text() + " " +incLoop+" "+ value);
+                                                     
+                            incLoop++;
+                        });
+                           
+                   });
+                    
+                    insertUser(accessKey, userId, matchesCount);
+                    
+                    //getMatchNPlayerInfo(matchesCount,matchVals);
+                    
+                    if(matchesCount > 0)
+                    {
+                        var valuesQry = "";
+                        
+                        var insertQry = "INSERT INTO " + matchesTableName +
+                        	" (match_id, game_id, type_id, play_type, name, created_by,"+
+                     		" created_by_type, match_date, result, venue, latitude, longitude,"+
+                     		" tournament_name, game_name, tournament_photo_url, match_status, player_info,"+
+                     		" require_partner, image_path, score_edit, inn_type, match_format) VALUES ";
+                        
+                        var insertParticipantQry = "INSERT INTO " + matchParticipants + " (match_id, match_participant_id, participant_id, participant_name, partner_id, partner_name) VALUES ";
+                        
+                        var valuesPartQry = "";
+                        
+                        db.transaction(function(tx) {
+                           for(var matchLoop = 0; matchLoop < matchesCount; matchLoop++)
+                           {
+                               var qryStr = "SELECT count(*) as cnt FROM matches WHERE match_id='"+matchVals[matchLoop]["match_id"]+"';";
+                                       //alert(matchVals[matchLoop]["player_info"]);
+                               tx.executeSql(qryStr, [], (function(matchLoop){
+                                  return function(tx,res) //success function
+                                  {
+                                      if(res.rows.item(0).cnt <= 0)
+                                      {
+                                          var commaStr = "";
+                                          
+                                          var valuesStr = "";
+                                                          
+                                          var commaPartStr = "";
+                                          
+                                          var valuesPartStr = "";
+                                          
+                                          valuesStr = "(" + matchVals[matchLoop]["match_id"] + ", '" + matchVals[matchLoop]["game_id"] + "', '" + matchVals[matchLoop]["type_id"];
+                                          
+                                          valuesStr = valuesStr + "', '" + matchVals[matchLoop]["play_type"] + "', '" + matchVals[matchLoop]["name"] + "', " + matchVals[matchLoop]["created_by"];
+                                          
+                                          valuesStr = valuesStr + ", '" + matchVals[matchLoop]["created_by_type"] + "', '" + matchVals[matchLoop]["match_date"] + "', '" + matchVals[matchLoop]["result"];
+                                          
+                                          valuesStr = valuesStr +  "', '" + matchVals[matchLoop]["full_address"] + "', '" + matchVals[matchLoop]["lat"] + "', '" + matchVals[matchLoop]["long"];
+                                          
+                                          valuesStr = valuesStr +  "', '" + matchVals[matchLoop]["tournamentName"] + "', '" + matchVals[matchLoop]["gameName"];
+                                          
+                                          valuesStr = valuesStr + "', '" + matchVals[matchLoop]["tournamentPhotoUrl"] + "', '" + matchVals[matchLoop]["match_status"];
+                                          
+                                          valuesStr = valuesStr + "', '" + matchVals[matchLoop]["player_info"] +  "', '" + matchVals[matchLoop]["require_partner"];
+
+                                          valuesStr = valuesStr + "', '" + matchVals[matchLoop]["image_path"];
+                                                          
+                                          valuesStr = valuesStr + "', " + matchVals[matchLoop]["score_edit"] +
+                                          	", " + matchVals[matchLoop]["inn_type"] +
+                                          	", '" + matchVals[matchLoop]["match_format"] +"' )";
+                                          
+//                                           alert("matchVals[matchLoop][match_format] "+matchVals[matchLoop]["match_format"]);
+//                                           alert("matchVals[matchLoop][player_info] "+matchVals[matchLoop]["player_info"]);
+                                          
+                                          if(valuesQry == "")
+                                          {
+                                              commaStr = " ";
+                                          }
+                                          else
+                                          {
+                                              commaStr = " , ";
+                                          }
+                                          
+                                          valuesQry = valuesQry + commaStr + valuesStr;
+                                                          //alert("dfdf");
+                                          var matchParticipantIds = matchVals[matchLoop]["matchParticipantIds"].split(",");
+                                                          
+                                          var playerDet = matchVals[matchLoop]["player_info"].split(",");
+
+                                          var playersLen = playerDet.length;
+                                                          
+                                          var playerDetails = new Array();
+                                          
+                                          for(var arrLoop=0;arrLoop<playerDet.length;arrLoop++)
+                                          {
+                                              var indexNum = arrLoop + 1;
+                                              
+                                              var indPlayerDet = playerDet[arrLoop].split("###");
+                                              
+                                              playerDetails["name"+indexNum] = indPlayerDet[1];
+                                              
+                                              playerDetails["id"+indexNum] = indPlayerDet[0];
+                                              
+                                              if(arrLoop == 1 && playerDet.length <= 2)
+                                              {
+                                                  var indexNum2 = arrLoop + 2;
+                                                  
+                                                  var indexNum3 = arrLoop + 3;
+                                                  
+                                                  playerDetails["name"+indexNum2] = playerDetails["name"+indexNum];
+                                                  
+                                                  playerDetails["id"+indexNum2] = playerDetails["id"+indexNum];
+                                                  
+                                                  playerDetails["name"+indexNum] = "";
+                                                  
+                                                  playerDetails["id"+indexNum] = "";
+                                                  
+                                                  playerDetails["name"+indexNum3] = "";
+                                                  
+                                                  playerDetails["id"+indexNum3] = "";
+                                              }
+                                          }
+                                                          
+                                          valuesPartStr = "(" + matchVals[matchLoop]["match_id"] + ", '" + matchParticipantIds[0] + "', '" + playerDetails["id1" ]+ "', '" + playerDetails["name1"];
+                                          
+                                          valuesPartStr = valuesPartStr + "', '" + playerDetails["id2" ]+ "', '" + playerDetails["name2"] + "')";
+                                                          
+                                          valuesPartStr = valuesPartStr + ", (" + matchVals[matchLoop]["match_id"] + ", '" + matchParticipantIds[1] + "', '" + playerDetails["id3" ];
+                                          
+                                          valuesPartStr = valuesPartStr + "', '" + playerDetails["name3"] + "', '" + playerDetails["id4" ]+ "', '" + playerDetails["name4"] + "')";
+                                                          
+                                          if(valuesPartQry == "")
+                                          {
+                                              commaPartStr = " ";
+                                          }
+                                          else
+                                          {
+                                              commaPartStr = " , ";
+                                          }
+                                          
+                                          valuesPartQry = valuesPartQry + commaPartStr + valuesPartStr;
+                                      }
+                                      //alert(insertParticipantQry + valuesPartQry);
+                                      if(matchLoop == matchesCount - 1 && valuesQry != "")
+                                      {
+                                          //alert(insertQry + valuesQry);
+                                          tx.executeSql(insertQry + valuesQry,[], function(tx, res) {
+                                          
+                                                tx.executeSql(insertParticipantQry + valuesPartQry,[], function(tx, res) {
+                                                        window.location.href = "matchList.html";
+                                                }, errorHandler);
+                                                
+                                                //window.location.href = "matchList.html";
+                                                
+                                          }, errorHandler);
+                                      }
+                                  };
+                                  
+                                  })(matchLoop), nullHandler, errorHandler);
+                           }
+                           
+                           }, errorHandler);
+                    }
+                }
+            }
+        }
+        
+        function createMatchTable()
+        {
+            db.transaction(function(tx) {
+            	
+                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + matchesTableName +
+                		' (match_id integer primary key, game_id integer, type_id integer,'+
+            			' play_type integer, name text, created_by integer, created_by_type integer,'+
+            			' match_date datetime, result text, venue text, latitude double, longitude double,'+
+            			' tournament_name text, game_name text, tournament_photo_url text,'+
+            			' match_status text, player_info text, require_partner integer, image_path text,'+
+            			' score_edit integer, inn_type integer, match_format text)',[], nullHandler, errorHandler);
+                
+                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + matchParticipants +
+                		' (id integer primary key, match_id integer, match_participant_id integer,'+
+              			' participant_id integer, participant_name text, partner_id integer,'+
+              			' partner_name text)',[], nullHandler, errorHandler);
+                  
+//                 tx.executeSql('CREATE TABLE IF NOT EXISTS ' + wicketMaster + ' (id integer primary key, name text, type integer)',[], nullHandler, errorHandler);
+                
+                
+                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + matchSquadTable +
+                		' (id integer primary key, match_id integer, player_id integer,'+
+               			' match_participant_id integer, first_name text, last_name text,'+
+               			' player_role text, team_role text,jersey_no integer,'+
+               			' player_image text)',[], nullHandler, errorHandler);
+                
+                
+                
+                tx.executeSql('CREATE TABLE IF NOT EXISTS ' + matchAttributes +
+                		' (id integer primary key, match_id integer, toss_won_by integer,'+
+            			' toss_decision text, innings_count integer,is_following integer,'+
+            			' total_overs integer, is_last_man_batting integer, result text,'+
+            			' match_status text, is_authenticated integer, mom_id integer)'
+            			,[], nullHandler, errorHandler);
+                
+                tx.executeSql("CREATE TABLE IF NOT EXISTS " + fullScoreTable +
+                		" (id integer primary key, match_id integer, innings_id integer,"+
+                		" player_id integer, match_participant_id integer, role_id integer, batting_bowling_order integer,"+
+                		" score_info_1 text, score_info_2 text,score_info_3 text,score_info_4 text,score_info_5 text,"+
+                		" bowler_dotballs integer, is_batting integer, out_text text, extra_count text)",[], nullHandler, errorHandler);
+                
+/*                 extra_count: bowler extras
+ *							format: nb##wd
+ */
+
+                tx.executeSql("CREATE TABLE IF NOT EXISTS " + fullScoreInfoTable +
+                		" (id integer primary key, match_id integer, innings_id integer,"+
+            			" match_participant_id integer, extra_text text, team_runs  integer,"+
+            			" team_wickets  integer, team_overs text, keeper_id integer,is_declare integer)",[], nullHandler, errorHandler);
+
+/*                 extra_text: team extras
+ *							format: b##lb##nb##wd##pen
+ */
+
+                tx.executeSql("CREATE TABLE IF NOT EXISTS " + fullScoreWicketTable +
+                		" (id integer primary key, match_id integer, innings_id integer,"+
+                		" batsman_id integer, bowler_id integer,"+
+                		" fielder_id_1 integer, fielder_id_2 integer, fielder_id_3 integer, fielder_id_4 integer,"+
+                		" wicket_type integer, wicket_number integer, fall_of_wickets text)",[], nullHandler, errorHandler);
+                		
+                
+                tx.executeSql("CREATE TABLE IF NOT EXISTS " + ballbyballTable +
+                		" (id integer primary key, match_id integer, innings_id integer,"+
+             			" over_id integer,ball_id integer,ball_unique float,"+
+            			" striker_id integer, non_striker_id integer, bowler_id integer,"+
+            			" batsman_runs integer, extra_runs integer,"+
+            			" extra_type integer, is_wicket integer, is_updated integer,"+
+            			" is_synced integer, curr_team_runs integer, curr_team_wickets integer,"+
+            			" required_runs integer, remaining_balls integer, this_over text"+
+            			" )",
+            			[], nullHandler, errorHandler);
+                
+                                           
+            }, errorHandlerNew);
+        }
+        
+        function insertUser(accessKey, userId, matchesCount)
+        {
+            var insertVals = 0;
+            
+            db.transaction(function(tx) {
+                tx.executeSql("select access_key from " + userTableName + " where access_key='" + accessKey + "';", [], function(tx, res) {
+                              
+                    var qry = "";
+                    
+                    if(res.rows.length <= 0)
+                    {
+                        insertVals = 1;
+                              
+                        qry = "INSERT INTO " + userTableName + " (social_id, user_id, type, access_key, is_active) VALUES ('" + socialID + "', " + userId + ", " + type;
+                              
+                        qry = qry + " , '" + accessKey + "', 1 );";
+                    }
+                    else
+                    {
+                        insertVals = 2;
+                              
+                        qry = "UPDATE " + userTableName + " set is_active=1 WHERE access_key='" + accessKey + "';";
+                    }
+                              //alert(qry+"--"+type+"--"+userId);
+                    
+                    //alert("insertVals "+insertVals+" socialID "+socialID);          
+                    
+                    tx.executeSql(qry, [], function(tx, res) {
+                        if(insertVals == 2)
+                        {
+
+                                tx.executeSql("UPDATE " + userTableName + " set is_active=0 WHERE access_key!='" + accessKey + "';", [], function(tx, res) {
+                                    
+                                }, errorHandler);
+
+                        }
+                            
+
+                        tx.executeSql("select id from " + userTableName + " where access_key='" + accessKey + "' and is_active=1;", [], function(tx, res) {
+                        
+                            if(res.rows.length > 0)
+                            {
+                                if(matchesCount <= 0)
+                                {
+                                      window.location.href = "matchList.html";
+                                }
+                                //window.location.href = "matchList.html";
+                            }
+                            else
+                            {
+                                $(".site-wrapper").show();
+                                alert("DB Error");
+                            }
+                        }, errorHandler);
+             
+                    }, errorHandler);
+               
+                }, errorHandler);
+             }, errorHandler);
+           
+           
+        }
+        
+        function authenticateError(data, status, req)
+        {
+            $(".site-wrapper").show();
+            alert("auth"+status);
+        }    
+        
+        </script>
+    </body>
+</html>

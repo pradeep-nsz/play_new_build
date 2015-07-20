@@ -1,0 +1,562 @@
+.pull-left {
+	float: left !important;
+}
+
+.pull-right {
+	float: right !important;
+}
+
+.margin-B10 {
+	margin-bottom: 10px !important
+}
+
+.clear {
+	clear: both
+}
+
+.prelative {
+	position: relative;
+}
+
+.image-circle-3 {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.player-no-a,.player-no-b {
+	background-color: #00b3db;
+	border-radius: 2px;
+	color: #fff;
+	font-size: 10px;
+	left: 0;
+	position: absolute;
+	text-align: center;
+	text-decoration: none;
+	top: -5px;
+	min-width: 20px;
+	height: 18px;
+	padding: 0 5px;
+	line-height: 18px;
+}
+
+.player-no-b {
+	background-color: #ef1953
+}
+
+.margin-L10 {
+	margin-left: 10px !important
+}
+
+.player-list {
+	display: block;
+	float: left;
+	margin-top: 10px
+}
+
+.line-up-list li:after,.player-list li:after {
+	content: "";
+	height: 6px;
+	left: 0;
+	position: absolute;
+	top: 7px;
+	width: 6px
+}
+
+.line-up-list li,.player-list li {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 300;
+	margin: 0 8px 0 0;
+	position: relative;
+	color: #99a9b3;
+	line-height: 18px
+}
+
+.player-list li {
+	float: left;
+	clear: both
+}
+
+.player-list li {
+	font-size: 12px;
+	color: #99a9b3
+}
+
+.line-up-list li>span,.player-list li>span {
+	display: inline-block;
+	letter-spacing: 0.2pt;
+	line-height: 16px;
+	background-color: #34be4b;
+	color: #fff;
+	border-radius: 5px;
+	font-size: 11px;
+	padding: 0 5px
+}
+
+.line-up-list li:first-child,.player-list li:first-child {
+	font-size: 14px;
+	color: #67747c
+}
+
+.line-up-list li>small,.player-list li>small {
+	font-size: 10px;
+	font-style: italic
+}
+
+.line-up-list li.blue:after,.player-list li.blue:after {
+	background-color: #297CBB
+}
+
+.line-up-list li.green:after,.player-list li.green:after {
+	background-color: #34be4b
+}
+
+.line-up-list li.red:after,.player-list li.red:after {
+	background-color: #fa5e5b
+}
+
+figure {
+	margin: 0px;
+}
+
+.match-circle-left-2 figure {
+	border-radius: 50%;
+	overflow: hidden;
+	width: 50px;
+	border: 4px solid rgb(0, 179, 219) !important;
+}
+
+img {
+	border: 0px none;
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+ul {
+	list-style: none outside none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.clear:after,.border-wrap:after,.border-wrap-content:after,.form-horizontal:after,.well:after,.widget-body:after,.input-icon:after,.well-md:after,.password-strength:after,.w-box:after
+	{
+	clear: both;
+}
+
+.clear:before,.clear:after,.border-wrap:before,.border-wrap:after,.border-wrap-content:before,.border-wrap-content:after,.form-horizontal:after,.form-horizontal:before,.well:before,.well:after,.widget-body:before,.widget-body:after,.input-icon:before,.input-icon:after,.well-md:before,.well-md:after,.password-strength:before,.confirm-password:before,.confirm-password:after,.password-strength:after,.w-box:before,.w-box:after
+	{
+	content: " ";
+	display: table;
+}
+
+.btn-success {
+	color: #FFF;
+	background-color: #5CB85C;
+	border-color: #4CAE4C;
+}
+
+.btn {
+	display: inline-block;
+	margin-bottom: 0px;
+	font-weight: 400;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 7px 12px;
+	font-size: 14px;
+	line-height: 1.42857;
+	border-radius: 4px;
+	-moz-user-select: none;
+}
+
+.btn-blue {
+	background-color: #297CBB;
+	border-color: #297CBB;
+	color: #FFF;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.extraButtons {
+	float: left
+}
+
+.extraButtons a {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	float: left;
+	border: 1px solid #fff;
+	margin: 0 5px 5px 0;
+	text-decoration: none;
+	font-size: 15px;
+	color: #000;
+	text-align: center;
+	background: #f3f3f3;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f3f3f3),
+		to(#e2e2e2));
+	background: -webkit-linear-gradient(top, #f3f3f3, #e2e2e2);
+	background: -moz-linear-gradient(top, #f3f3f3, #e2e2e2);
+	background: -ms-linear-gradient(top, #f3f3f3, #e2e2e2);
+	background: -o-linear-gradient(top, #f3f3f3, #e2e2e2);
+	border-radius: 5px;
+	box-shadow: 0 1px 0.01em rgba(0, 0, 0, 0.35)
+}
+
+.extrasContent {
+	z-index: 12;
+	position: absolute;
+	background-color: #FFFFFF;
+}
+
+.extrasContent h4 {
+	margin-left: 15px;
+}
+
+.match-scoring-team01,.match-scoring-team02 {
+	width: 50%;
+	float: left;
+}
+
+.match-scoring-teamLogo01,.match-scoring-teamLogo02 {
+	width: 65px;
+	margin: 0;
+	float: left;
+	color: #fff;
+	font-size: 11px
+}
+
+.match-scoring-teamLogo02 {
+	float: right
+}
+
+.match-scoring-ballByballs {
+	height: 40px;
+	overflow: hidden;
+	background: #192029;
+	position: relative
+}
+
+.match-scoring-ballByballs ul {
+	margin: 5px 0 0 5px;
+	padding: 0;
+	list-style: none;
+	width: 2000px
+}
+
+.match-scoring-ballByballs ul li {
+	margin: 0;
+	padding: 0;
+	line-height: 30px;
+	list-style: none;
+	float: left;
+	width: 30px;
+	height: 30px;
+	background: #eee;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
+	border-radius: 3px;
+	margin: 0 10px 0 0
+}
+
+.match-scoring-ballByballs ul li.done {
+	background-color: #427fed;
+	font-size: 10px;
+	text-align: center;
+	color: #fff;
+	box-shadow: none
+}
+
+.run-score-undo {
+	width: 30px;
+	height: 30px;
+	background: url(../img/run-score-undo.png) no-repeat left top #dd4b39;
+	border-radius: 3px;
+	overflow: hidden;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	cursor: pointer
+}
+
+/* .all-overs { */
+/* 	width: 1000000px; */
+/* 	position: absolute; */
+/* } */
+
+/* .run-score-undo { */
+/* 	width: 30px; */
+/* 	height: 30px; */
+/* 	background: url(../img/run-score-undo.png) no-repeat left top #dd4b39; */
+/* 	border-radius: 3px; */
+/* 	overflow: hidden; */
+/* 	position: absolute; */
+/* 	left: 285px; */
+/* 	top: 5px; */
+/* 	cursor: pointer; */
+/* 	z-index: 9 */
+/* } */
+
+.match-attributes-section .teamLogo {
+	width: 40px;
+	height: 40px;
+	border: 2px solid #000;
+	border-radius: 5px;
+	float: left
+}
+
+.teamLogo img {
+	max-width: 100%
+}
+
+.teamPlayers01,.teamPlayers02 {
+	width: 64px;
+	height: 70px;
+	position: relative;
+	float: left
+}
+
+.teamPlayers02 .player01 {
+	right: 0
+}
+
+.teamPlayers02 .player02 {
+	right: 25
+}
+
+.teamPlayers01 .player01,
+.teamPlayers01 .player02,
+.teamPlayers02 .player01,
+.teamPlayers02 .player02
+	{
+	width: 40px;
+	height: 40px;
+	border: 2px solid #000;
+	border-radius: 50%;
+	overflow: hidden;
+	position: absolute
+}
+
+.teamPlayers01 .player02 {
+	margin: 25px 0 0 15px;
+	z-index: 11
+}
+
+.teamPlayers02 .player02 {
+	margin: 25px 0 0 0px;
+	z-index: 11
+}
+
+.teamPlayers01 img,.teamPlayers02 img {
+	width: 40px;
+	height: 40px
+}
+
+.match-attributes-section .match-summary-details-teams,
+.match-attributes-section .match-scoring-details-teams {
+	padding: 15px 10px 0;
+	text-align: center;
+	background: url(../img/bg-match-summary-details.jpg) no-repeat left top;
+	background-size: 100% auto;
+	overflow: hidden;
+	height: 50px;
+}
+
+.match-attributes-section .match-scoring-details-teams {
+	background-position: 0px -50px
+}
+
+.match-attributes-section .match-summary-details-teamLogo01,
+.match-attributes-section .match-summary-details-teamLogo02 {
+	width: 65px;
+	text-align: center;
+	font-size: 11px;
+	color: #fff;
+	margin: 0px;
+}
+
+.match-attributes-section .team1BdrClr,
+.match-attributes-section .team1BdrClr .player02,
+.match-attributes-section .team1BdrClr .player01 {
+	border-color: #ff8800
+}
+
+.match-attributes-section .team2BdrClr,
+.match-attributes-section .team2BdrClr .player02,
+.match-attributes-section .team2BdrClr .player01 {
+	border-color:#519430
+}
+
+.match-summary-details-teamLogo01 {
+	float: left
+}
+
+.match-summary-details-teamLogo02 {
+	float: right
+}
+
+.match-summary-details-teamLogo01 .teamLogo,
+.match-summary-details-teamLogo02 .teamLogo
+{
+	margin-bottom: 5px
+}
+
+.match-summary-details-desc {
+	margin: 0 50px
+}
+
+.match-summary-details-desc h3 {
+	margin: 0 0 10px;
+	padding: 0;
+	font-size: 14px;
+	color: #fff;
+	font-weight: normal
+}
+
+.match-summary-details-desc h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+	color: #fff;
+	font-weight: 300;
+	line-height: 30px
+}
+
+.match-summary-details-desc h2 span {
+	color: #9bca7d
+}
+
+.teams a{
+	display: inline;
+}
+
+.well {
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    display:none;
+	margin:1em;
+}
+
+.well input {
+	min-height: 30px;
+	padding: 5px;
+	margin-bottom: 20px;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.wicket-type {
+	padding: 10px;
+	background: #fff;
+	margin-top: 1px;
+}
+
+.wicket-type h3 {
+	margin: 0;
+	font-size: 15px
+}
+
+.wicket-type-arrow {
+	width: 16px;
+	height: 16px;
+	vertical-align: text-bottom;
+	background: url(../img/16x16.png) no-repeat
+}
+
+.wicket-type-arrow {
+	background-position: 0px -128px;
+	float: right;
+	margin-top: 4px;
+}
+
+.wicket-type label {
+	float: right;
+	margin-top: -2px;
+}
+
+.wicketsList ul, .otherOptions ul, .wicketRunsContent ul {
+	margin: 0 0 58px;
+	padding: 0;
+	list-style: none;
+}
+
+.wicketsList ul li, .otherOptions ul li, .wicketRunsContent ul li {
+	margin: 0;
+	padding: 5px 10px;
+	list-style: none;
+	background-color: #fff;
+	margin-top: 1px;
+	font-size: 14px
+}
+
+.section-head {
+	padding: 10px;
+	background: #f5f5f5
+}
+
+.ios-checkbox {
+	background-color: #ccc;
+	border-radius: 15px;
+	width: 50px;
+	height: 26px;
+	overflow: hidden;
+	position: relative;
+	cursor: pointer;
+}
+
+.ios-checkbox input[type=checkbox] {
+	display: none;
+}
+
+.ios-checkbox input[type=checkbox]+.ios-checkbox-bg {
+	background-color: #ccc;
+	border-radius: 15px;
+	display: block;
+	width: 50px;
+	height: 26px;
+	overflow: hidden;
+	-webkit-transition: background-color .35s ease-out;
+	-moz-transition: background-color .35s ease-out;
+	transition: background-color .35s ease-out;
+}
+
+.ios-checkbox input[type=checkbox]:checked+.ios-checkbox-bg {
+	background-color: #4bd863
+}
+
+.ios-checkbox input[type=checkbox]+.ios-checkbox-bg+.ios-checkbox-active-circle
+	{
+	position: absolute;
+	display: block;
+	top: 1px;
+	left: 1px;
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	background-color: #fff;
+	-webkit-transition: all .35s ease-out;
+	-moz-transition: all .35s ease-out;
+	transition: all .35s ease-out;
+}
+
+.ios-checkbox input[type=checkbox]:checked+.ios-checkbox-bg+.ios-checkbox-active-circle
+	{
+	left: 25px;
+	box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.3);
+}

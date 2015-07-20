@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/matchScoring.css" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Playinga</title>
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        
+<!-- 		<link href="css/bootstrap/main.css" rel="stylesheet"> -->
+        
+    </head>
+    
+    <body>
+        
+        <div id="MatchScoringId" ng-controller="MatchScoring as scope" class="site-wrapper">
+        
+            <header class="topBar"><a class="mainMenu" href="javascript:;"></a>
+                <a class="backBtn" href="index.html"></a>
+                <h1 class="header-title"><img src="img/spacer.gif" class="icon-sportType21 icon-cricket" alt="" /> {{details.name}}</h1>
+            </header>
+            
+            <nav class="main-navs threeNavs">
+	            <a href="matchIndex.html?matchId={{details.match_id}}&tabNo={{details.tabNo}}" >
+	                <hr />
+	                Details
+	            </a>
+                <a href="scorecard.html?matchId={{details.match_id}}&tabNo={{details.tabNo}}">
+                	<hr />
+                    Scorecard
+                </a>
+                <a href="" class="active">
+                	<hr />
+                    Scoring
+                </a>
+            </nav>
+            
+            <section class="contentSection match-scoring-ballByBall">
+            
+                <div class="match-scoring-details-teams">
+                
+                    <div class="match-scoring-team01">
+                    
+                        <div class="match-summary-details-teamLogo01" style="margin:0px;">
+                        
+                            <div class="teamPlayers01 team1BdrClr {{details.play_type <= 1 && 'hide' || ''}}" >
+                                <div class="player01">
+                                	<img src="{{details.playerimage1}}" width="60" height="60" alt="{{details.playername1}}">
+                               	</div>
+                                <div class="player02 {{details.playerimage2 == '' && 'hide' || ''}}">
+                                	<img src="{{details.playerimage2}}" width="60" height="60" alt="{{pst.playername2}}">
+                               	</div>
+                            </div>
+                            
+                            <div class="teamLogo team1BdrClr {{details.play_type > 1 && 'hide' || ''}}">
+                            	<img src="{{details.playerimage1}}" alt="{{pst.playername1}}" />
+                           	</div>
+                           	
+                            {{details.playername1}}
+                            
+                        </div>
+                        
+                        <div class="match-scoring-score">
+                        	<span class="scores">
+                        		{{matchBallInfo.team1Innings1Overs == ''
+                       			&& ' ' || matchBallInfo.team1Innings1Runs+'/'+matchBallInfo.team1Innings1Wickets}}
+                       		</span> 
+                        	<span class="overs">
+                        		{{matchBallInfo.team1Innings1Overs == ''
+                        		&& ' ' || '('+matchBallInfo.team1Innings1Overs+' Overs)'}}
+                        	</span> 
+                        	<span class="requiredRR">
+                        		{{matchBallInfo.team1Innings1Overs == ''
+                        		&& ' ' || 'RR:'+matchBallInfo.team1Innings1RR}}
+                       		</span>
+                       	</div>
+                       	
+                    </div>
+                    
+                    <div class="match-scoring-team02">
+                    
+                        <div class="match-summary-details-teamLogo02" style="margin:0px;">
+                            <div class="teamPlayers02 team2BdrClr {{details.play_type <= 1 && 'hide' || ''}}">
+                                <div class="player01"><img src="{{details.playerimage3}}" width="60" height="60" alt="{{details.playername2}}"></div>
+                                <div class="player02 {{details.playerimage4 == '' && 'hide' || ''}}"><img src="{{details.playerimage4}}" width="60" height="60" alt="{{pst.playername2}}"></div>
+                            </div>
+                            <div class="teamLogo team2BdrClr {{details.play_type > 1 && 'hide' || ''}}"><img src="{{details.playerimage3}}" alt="{{pst.playername2}}" /></div>
+                            {{details.playername2}}
+                        </div>
+                        
+                        <div class="match-scoring-score">
+                        	<span class="scores">
+<!--                         		{{matchBallInfo.team2Innings1Runs == ''}} -->
+                        		{{matchBallInfo.team2Innings1Overs == ''
+                       			&& ' ' || matchBallInfo.team2Innings1Runs+'/'+matchBallInfo.team2Innings1Wickets}}
+                       		</span> 
+                        	<span class="overs">
+<!--                         		{{matchBallInfo.team2Innings1Overs}} -->
+                        		{{matchBallInfo.team2Innings1Overs == ''
+                        		&& ' ' || '('+matchBallInfo.team2Innings1Overs+' Overs)'}}
+                        	</span> 
+                        	<span class="requiredRR">
+<!--                         		{{matchBallInfo.team2Innings1RR}} -->
+                        		{{matchBallInfo.team2Innings1Overs == ''
+                        		&& ' ' || 'RR:'+matchBallInfo.team2Innings1RR}}
+                       		</span>
+                      	</div>
+                      	
+                    </div>
+                    
+                    <div class="match-scoring-requires">
+                    	{{matchBallInfo.matchStatus}}
+                        <p>{{matchBallInfo.requiredRunRate != '' && 'Required Run Rate: '+matchBallInfo.requiredRunRate || ' ' }}</p>
+                    </div>
+                    
+                </div>
+                
+                <div class="match-scoring-players">
+                
+                	<div class="player-detail strikerDetails hide">
+			        	<div class="player-score-details">
+			            	<h2 class="runsorwickets">{{matchBallInfo.strikerRuns}}</h2>
+			            	
+			            	<h1 class="playerName">
+			                	<span class="">{{matchBallInfo.strikerName}}</span>
+			                </h1>
+			                
+			                <div class="score-details">
+			                	<div class="strike-rate">
+				                    Balls Faced: {{matchBallInfo.strikerBalls}}<br>
+									Strike Rate: {{matchBallInfo.strikerSR}}
+			                    </div>
+			                    <div class="fours-sixes">
+			                    	4’s: {{matchBallInfo.striker4s}}<br>6’s: {{matchBallInfo.striker6s}}
+		                    	</div>
+			                </div>
+			            </div>
+			        </div>
+			        
+			        <div class="player-detail nonStrikerDetails hide">
+			        	<div class="player-score-details">
+			            	<h2 class="runsorwickets">{{matchBallInfo.nonStrikerRuns}}</h2>
+			            	
+			            	<h1 class="playerName">
+			                	<span class="">{{matchBallInfo.nonStrikerName}}</span>
+			                </h1>
+			                
+			                <div class="score-details">
+			                	<div class="strike-rate">
+				                    Balls Faced: {{matchBallInfo.nonStrikerBalls}}<br>
+									Strike Rate: {{matchBallInfo.nonStrikerSR}}
+			                    </div>
+			                    <div class="fours-sixes">
+			                    	4’s: {{matchBallInfo.nonStriker4s}}<br>6’s: {{matchBallInfo.nonStriker6s}}
+		                    	</div>
+			                </div>
+			            </div>
+			        </div>
+			        
+			        <div class="player-detail bowlerDetails hide">
+			        	<div class="player-score-details">
+			            	<h2 class="runsorwickets">{{matchBallInfo.bowlerWickets}}/{{matchBallInfo.bowlerRuns}}</h2>
+			            	
+			            	<h1 class="playerName">
+			                	<span class="">{{matchBallInfo.bowlerName}}</span>
+			                </h1>
+			                
+			                <div class="score-details">
+			                	<div class="strike-rate">
+				                    Overs Bowled: {{matchBallInfo.bowlerOvers}}<br>
+									Econ: {{matchBallInfo.bowlerEcon}}
+			                    </div>
+<!-- 			                    <div class="fours-sixes"> -->
+<!-- 			                    	4’s: {{matchBallInfo.bowlerWickets}}<br>6’s: {{matchBallInfo.bowlerWickets}} -->
+<!-- 		                    	</div> -->
+			                </div>
+			            </div>
+			        </div>
+                 
+                    <div class="match-scoring-bowler {{matchBallInfo.bowlerName == '' && 'hide' || ' '}}" onClick = "showInfo('bowlerDetails')">
+                       
+                       	<div class="bowlingToBatsmanIcon"></div>
+                        <div class="player" style="border-color:#ff8800" >
+                        	<img src="{{matchBallInfo.bowlerImage}}" width="60" height="60" alt="Player Name">
+                       	</div>
+                        <h2 class="playerName">{{matchBallInfo.bowlerName}}</h2>
+                        <h3 class="scores">{{matchBallInfo.bowlerWickets}}/{{matchBallInfo.bowlerRuns}}</h3>
+                        
+                    </div>
+                    
+                    <div class="match-scoring-batsmans">
+                        
+                        <div class="match-scoring-curBatsman {{matchBallInfo.strikerName == '' && 'hide' || ' '}}" onClick = "showInfo('strikerDetails')">
+                            <div class="player" style="border-color:#ff8800">
+                            	<img src="{{matchBallInfo.strikerImage}}" width="60" height="60" alt="Player Name">
+                           	</div>
+                            <h2 class="playerName">{{matchBallInfo.strikerName}}</h2>
+                            <h3 class="scores">{{matchBallInfo.strikerRuns}} ({{matchBallInfo.strikerBalls}})</h3>
+                        </div>
+                        
+                        <div class="match-scoring-batsman {{matchBallInfo.nonStrikerName == '' && 'hide' || ' '}}">
+                            <div class="playerSwapIcon" ng-click="swapStrikers()">
+                            	<img src="img/spacer.gif" alt="" class="icon_24 icon_playerSwapIcon">
+                           	</div>
+                           	<div onClick = "showInfo('nonStrikerDetails')">
+	                            <div class="player" style="border-color:#ff8800">
+	                            	<img src="{{matchBallInfo.nonStrikerImage}}" width="60" height="60" alt="Player Name">
+	                           	</div>
+	                            <h2 class="playerName">{{matchBallInfo.nonStrikerName}}</h2>
+	                            <h3 class="scores">{{matchBallInfo.nonStrikerRuns}} ({{matchBallInfo.nonStrikerBalls}})</h3>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+                <div class="match-scoring-ballByballs" style = "overflow: scroll;">
+                    <div class="run-score-undo"></div>
+                    <ul ng-repeat="runs in matchBallInfo.thisOverInfo">
+                        <li class="{{runs.runs != '' && runs.runs != ' ' && 'done'||''}}">{{runs.runs}}</li>
+                    </ul>
+                </div>
+                
+                <div class="match-scoring-enter">
+                    <div class="runsButtons">
+                    	<a href="javascript:;" ng-click="updateRuns(0,'0')">0</a>
+                    	<a href="javascript:;" ng-click="updateRuns(1,'1')">1</a>
+                    	<a href="javascript:;" ng-click="updateRuns(2,'2')">2</a>
+                    	<a href="javascript:;" ng-click="updateRuns(3,'3')">3</a>
+                    	<a href="javascript:;" ng-click="updateRuns(4,'4')">4</a>
+                    	<a href="javascript:;" ng-click="updateRuns(6,'6')">6</a>
+                    	</div>
+                    <div class="runsOtherButtons">
+                        <a href="javascript:;" onClick = "showExtraDetails()" >Extras</a>
+                        <a href="javascript:;">Wicket</a>
+                        <a href="javascript:;">Options</a>
+                    </div>
+                </div>
+                
+            </section>
+            
+            <section class="contentSection next-batsman-details hide" style="position: absolute;background:#FFFFFF;height: 100%">
+            	<div class="formRow match-circle-left-2">
+         		  	<h3>Choose Next Batsman</h3>
+					<div ng-repeat="teamPlayers in battingRemaining">                      	
+						<div class="clear margin-B10" ng-click = "chooseStrikers($index)">
+							<div class="prelative">
+								<figure class="pull-left image-circle-3">
+									<img src="{{teamPlayers.ImageUrl}}">
+								</figure>
+								<span class="player-no-a">{{teamPlayers.No}}</span>
+								<article class="pull-left margin-L10">
+								<ul class="player-list" >
+									<li>{{teamPlayers.Name}} <span>{{teamPlayers.position}}</span></li>
+									<li>{{teamPlayers.Role}}</li>
+								</ul>
+								</article>
+								<input type="radio" name="radioGroup" ng-model = "choosedId" value = "{{teamPlayers.id}}" class = "pull-right"/>
+							</div>
+						</div>          
+					</div>
+					<div class="clear text-right margin-B20">
+						<button class="btn btn-success margin-L10 publish" ng-click="addStrikers()">Proceed</button>
+					</div> 
+               </div>
+			</section>
+            
+            <section class="contentSection next-bowler-details hide" style="position: absolute;background:#FFFFFF;height: 100%">
+            	<div class="formRow match-circle-left-2">
+         		  	<h3>Choose Next Bowler</h3>
+					<div ng-repeat="teamPlayers in bowlingRemaining">                      	
+						<div class="clear margin-B10" ng-click = "chooseBowlers($index)">
+							<div class="prelative">
+								<figure class="pull-left image-circle-3">
+									<img src="{{teamPlayers.ImageUrl}}">
+								</figure>
+								<span class="player-no-a">{{teamPlayers.No}}</span>
+								<article class="pull-left margin-L10">
+								<ul class="player-list" >
+									<li>{{teamPlayers.Name}} <span>{{teamPlayers.position}}</span></li>
+									<li>{{teamPlayers.Role}}</li>
+								</ul>
+								</article>
+								<input type="radio" name="radioGroup" ng-model = "choosedId" value = "{{teamPlayers.id}}" class = "pull-right"/>
+							</div>
+						</div>          
+					</div>
+					<div class="clear text-right margin-B20">
+						<button class="btn btn-success margin-L10 publish" ng-click="addBowlers()">Proceed</button>
+					</div> 
+               </div>
+			</section>
+            
+            <section class="contentSection extrasContent hide">
+            
+            	<h4> Byes </h4>
+                <div class="match-scoring-enter">
+                    <div class="extraButtons">
+                    	<a href="javascript:;" ng-click="updateExtras(0,1,1,'1b')">b</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,2,1,'2b')">2b</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,3,1,'3b')">3b</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,4,1,'4b')">4b</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,5,1,'5b')">5b</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,6,1,'6b')">6b</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,7,1,'7b')">7b</a>
+                   	</div>
+                </div>
+                
+                <h4> Leg Byes </h4>
+                <div class="match-scoring-enter">
+                    <div class="extraButtons">
+                    	<a href="javascript:;" ng-click="updateExtras(0,1,2,'1lb')">lb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,2,2,'2lb')">2lb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,3,2,'3lb')">3lb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,4,2,'4lb')">4lb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,5,2,'5lb')">5lb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,6,2,'6lb')">6lb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,7,2,'7lb')">7lb</a>
+                   	</div>
+                </div>
+                
+                <h4> Wides </h4>
+                <div class="match-scoring-enter">
+                    <div class="extraButtons">
+                    	<a href="javascript:;" ng-click="updateExtras(0,1,4,'wd')">wd</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,2,4,'wd+1')">1wd</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,3,4,'wd+2')">2wd</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,4,4,'wd+3')">3wd</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,5,4,'wd+4')">4wd</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,6,4,'wd+5')">5wd</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,7,4,'wd+6')">6wd</a>
+                   	</div>
+                </div>
+                
+                <h4> No ball off the bat </h4>
+                <div class="match-scoring-enter">
+                    <div class="extraButtons">
+<!--                     	<a href="javascript:;" ng-click="updateExtras(0,1,4,'nb')">nb</a> -->
+                    	<a href="javascript:;" ng-click="updateExtras(1,1,3,'nb+1')">1nb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(2,1,3,'nb+2')">2nb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(3,1,3,'nb+3')">3nb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(4,1,3,'nb+4')">4nb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(5,1,3,'nb+5')">5nb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(6,1,3,'nb+6')">6nb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(7,1,3,'nb+7')">7nb</a>
+                   	</div>
+                </div>
+                
+                <h4> No ball not off the bat </h4>
+                <div class="match-scoring-enter">
+                    <div class="extraButtons">
+                    	<a href="javascript:;" ng-click="updateExtras(0,1,3,'nb')">nb</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,2,3,'nb+1')">nb+1</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,3,3,'nb+2')">nb+2</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,4,3,'nb+3')">nb+3</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,5,3,'nb+4')">nb+4</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,6,3,'nb+5')">nb+5</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,7,3,'nb+6')">nb+6</a>
+                   	</div>
+                </div>
+                
+                <h4> Penalities </h4>
+                <div class="match-scoring-enter">
+                    <div class="extraButtons">                    	
+                    	<a href="javascript:;" ng-click="updateExtras(0,1,5,'1pe')">+1</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,2,5,'2pe')">+2</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,3,5,'3pe')">+3</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,4,5,'4pe')">+4</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,5,5,'5pe')">+5</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,6,5,'6pe')">+6</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,7,5,'7pe')">+7</a>
+                   	</div>
+                   	<div class="extraButtons">                    	
+                    	<a href="javascript:;" ng-click="updateExtras(0,-1,5,'pe-1')">-1</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,-2,5,'pe-2')">-2</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,-3,5,'pe-3')">-3</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,-4,5,'pe-4')">-4</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,-5,5,'pe-5')">-5</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,-6,5,'pe-6')">-6</a>
+                    	<a href="javascript:;" ng-click="updateExtras(0,-7,5,'pe-7')">-7</a>
+                   	</div>
+                </div>
+                
+            </section>
+            
+        </div>
+        
+        <script src="js/iscroll.js"></script>
+        <script type="text/javascript" src="js/general.js"></script>
+        <script type="text/javascript" src="js/matchEntry.js"></script>
+        <script>
+        	document.addEventListener("deviceready", onDeviceReady, false);
+		</script>
+    </body>
+</html>

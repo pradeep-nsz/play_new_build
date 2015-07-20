@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1" />
+<title>Playinga - Today Matches</title>
+<link href="css/main.css" type="text/css" rel="stylesheet" />
+<link href="css/matchDetails.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="site-wrapper">
+  <header class="topBar"><a class="mainMenu" href="javascript:;"></a> <a class="backBtn" href="match-details.html"></a>
+    <h1 class="header-title"><img src="imgs/spacer.gif" class="icon-sportType21 icon-cricket" alt="" /> League Match 23</h1>
+  </header>
+  <nav class="main-navs threeNavs"><a href="javascript:;">
+    <hr />
+    Details</a><a href="match-details.html" class="active">
+    <hr />
+    Scorecard</a><a href="match-score.html" class="">
+    <hr />
+    Settings</a></nav>
+  <section class="contentSection match-scoring-ballByBall">
+    <div class="match-small-header">
+    	<div class="teamLogo team-opponent" style="border-color:#519430"><img src="imgs/teamlogo02.png" alt="Team Name02"></div>
+    	<div class="teamLogo" style="border-color:#ff8800"><img src="imgs/teamlogo01.png" alt="Team Name01"></div>
+    	<h3 class="leaguename"><img src="imgs/spacer.gif" class="icon-todayLeagueNameW" alt=""> Indian Premiere League</h3>
+    </div>
+    <div class="section-head">
+    	Wicket Type
+    </div>
+    
+			<div class="wicketsList">
+		            
+		            	<div class="section-head">
+					    	Wicket Type
+					    </div>
+		            
+				    	<ul>
+				    		<li ng-click="updateWickets(0,0,0,1,matchBallInfo.strikerId,'0','W')" >
+				    			<div class="wicket-type-arrow"></div>
+				    			Bowled
+			    			</li>
+				    		<li ng-click = "showWicketDetails(2)">
+				    			<div class="wicket-type-arrow"></div>
+				    			Caught
+				    		</li>
+				    		<li ng-click="updateWickets(0,0,0,4,matchBallInfo.strikerId,'0','W')">
+				    			<div class="wicket-type-arrow"></div>
+				    			LBW
+			    			</li>
+				    		<li ng-click = "showWicketDetails(5)">
+				    			<div class="wicket-type-arrow"></div>
+				    			Stumped
+				    		</li>
+				    		<li ng-click = "showWicketDetails(7)">
+				    			<div class="wicket-type-arrow"></div>
+				    			Run Out
+			    			</li>
+				    		<li ng-click="updateWickets(0,0,0,6,matchBallInfo.strikerId,'0','W')">
+				    			<div class="wicket-type-arrow"></div>
+				    			Hit Wicket
+				    		</li>
+				    		<li ng-click = "showWicketDetails(8)">
+				    			<div class="wicket-type-arrow"></div>
+					    		Handling the Ball
+				    		</li>
+				    		<li ng-click = "showWicketDetails(9)">
+				    			<div class="wicket-type-arrow"></div>
+				    			Hit Ball Twice
+				    		</li>
+				    		<li ng-click = "showWicketDetails(10)">
+				    			<div class="wicket-type-arrow"></div>
+				    			Obstructing the Field
+			    			</li>
+				    	</ul>
+				    	
+				    	<div class="wicket-types wicketDetails">
+				    	
+					    	<div class="wicket-type" style="margin-top: 20px;">
+					    		<div class="wicket-type-arrow"></div>
+					    		<h3>{{choosenWicketTitle}}</h3>
+					    	</div>
+					    	
+					    	<div class="wicket-type wideSwitch" style="margin-top: 20px;">
+					    		<label for="wideOnOff" class="ios-checkbox">
+					    			<input ng-model = "wideSwitch" type="checkbox" id="wideOnOff">
+					    			<span class="ios-checkbox-bg"></span>
+					    			<span class="ios-checkbox-active-circle"></span>
+								</label>
+					    		<h3>Wide</h3>
+					    	</div>
+					    	
+					    	<div class="wicket-type noBallSwitch" style="margin-top: 20px;">
+					    		<label for="noBallOnOff" class="ios-checkbox">
+					    			<input ng-model = "noBallSwitch" type="checkbox" id="noBallOnOff">
+					    			<span class="ios-checkbox-bg"></span>
+					    			<span class="ios-checkbox-active-circle"></span>
+								</label>
+					    		<h3>No Ball</h3>
+					    	</div>
+					    	
+					    	<div class="wicket-type keeperSwitch" style="margin-top: 20px;">
+					    		<label for="keeperOnOff" class="ios-checkbox">
+					    			<input ng-model = "keeperSwitch" type="checkbox" id="keeperOnOff">
+					    			<span class="ios-checkbox-bg"></span>
+					    			<span class="ios-checkbox-active-circle"></span>
+								</label>
+					    		<h3>Caught by Keeper</h3>
+					    	</div>
+					    	
+					    	<div class="chooseOutBatsman" style="margin-top: 20px;">
+					    	
+						    	<div class="wicket-type section-head">
+						    		<div class="wicket-type-arrow"></div>
+						    		<h3>OutBatsman</h3>
+						    	</div>
+						    	
+						    	<div class="wicket-type strikerOut" ng-click = "choosingOutBatsman(1)">
+						    		<h3>Striker</h3>
+						    	</div>
+						    	
+						    	<div class="wicket-type nonStrikerOut {{matchBallInfo.nonStrikerId == 0 && 'hide' || ' '}}"
+						    		ng-click = "choosingOutBatsman(0)" >
+						    		<h3>Non Striker</h3>
+						    	</div>
+					    	
+					    	</div>
+					    	
+					    	<div class="chooseWicketFielders" style="margin-top: 20px;">
+					    	
+					    		<div class="wicket-type section-head" >
+						    		<div class="wicket-type-arrow"></div>
+						    		<h3>Fielders</h3>
+						    	</div>
+						    	
+						    	<fieldset class="formSection" style="background:#FFFFFF;">
+					    	
+						    		<div class="formRow match-circle-left-2">
+						    	
+								    	<div ng-repeat="teamPlayers in choosenFielders">
+				                        	<div class="clear margin-B10" >
+					                          <div class="prelative">
+					                            <figure class="pull-left image-circle-3">
+					                            	<img src="{{teamPlayers.imageUrl}}">
+					                           	</figure>
+					                            <span class="player-no-a">{{teamPlayers.No}}</span>
+					                            <article class="pull-left margin-L10">
+					                              <ul class="player-list" >
+					                                <li>{{teamPlayers.Name}} <span>{{teamPlayers.position}}</span></li>
+					                                <li>{{teamPlayers.Role}}</li>
+					                              </ul>
+					                            </article>
+					                            
+					                            <div class="formBtnsRow wicket-type-bottom-nav" style="margin-top: 20px;">
+											    	<input ng-click = "removeFielders($index)" type="submit" value="Remove" class="formBtn primarybutton">
+											    </div>
+											    
+					                          </div>
+					                        </div>               
+				                        </div>
+				                        
+			                        </div>
+			                        
+		                        </fieldset>
+		                        
+		                        <div class="wicket-type" onClick="showFielders()" >
+						    		<div class="wicket-type-arrow"></div>
+						    		<h3>Add Fielder</h3>
+						    	</div>
+						    	
+					    	</div>
+					    	
+					    	<fieldset class="fieldersList formSection" style="background:#FFFFFF;">
+					    	
+						    	<div class="formRow match-circle-left-2">
+						    	
+			                    	<h4>Choose Fielders</h4>
+			                    	
+			                        <div ng-repeat="teamPlayers in fieldersList">
+			                        
+			                        	<div class="clear" ng-click = "chooseFielders($index)">
+				                          <div class="prelative">
+				                            <figure class="pull-left image-circle-3">
+				                            	<img src="{{teamPlayers.imageUrl}}">
+				                           	</figure>
+				                            <span class="player-no-a">{{teamPlayers.No}}</span>
+				                            <article class="pull-left margin-L10">
+				                              <ul class="player-list" >
+				                                <li>{{teamPlayers.Name}} <span>{{teamPlayers.position}}</span></li>
+				                                <li>{{teamPlayers.Role}}</li>
+				                              </ul>
+				                            </article>
+	<!-- 			                            <input type="radio" name="radioGroup" ng-model = "choosedId" value = "{{teamPlayers.id}}" class = "pull-right"/> -->
+				                          </div>
+				                        </div>               
+			                        </div>
+			                        
+			                     </div>
+			                     
+		                     </fieldset>
+					    	
+					    	<div onClick = "showWicketRuns()"
+					    		class="wicket-type section-head chooseWicketRuns" style="margin-top: 20px;">
+					    		<div class="wicket-type-arrow"></div>
+					    		<div class="" style="float: right; color: #a0a0a0">{{wicketChoosenRuns}}</div>
+					    		<h3>Runs or Extras</h3>
+					    	</div>
+					    	
+					    	<div class="wicketRunsContent">
+						    	<ul>
+			            			<li>
+							    		<h4>Runs</h4>
+						                <div class="match-scoring-enter">
+						                    <div class="extraButtons">
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(1,0,0,'1')">1</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(2,0,0,'2')">2</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(3,0,0,'3')">3</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(4,0,0,'4')">4</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(5,0,0,'5')">5</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(6,0,0,'6')">6</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(7,0,0,'7')">7</a>
+						                   	</div>
+						                </div>
+				              		</li>
+				            		<li>
+						            	<h4> Byes </h4>
+						                <div class="match-scoring-enter">
+						                    <div class="extraButtons">
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,1,1,'1b')">b</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,2,1,'2b')">2b</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,3,1,'3b')">3b</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,4,1,'4b')">4b</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,5,1,'5b')">5b</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,6,1,'6b')">6b</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,7,1,'7b')">7b</a>
+						                   	</div>
+						                </div>
+					                </li>
+				            		<li>
+						                <h4> Leg Byes </h4>
+						                <div class="match-scoring-enter">
+						                    <div class="extraButtons">
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,1,2,'1lb')">lb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,2,2,'2lb')">2lb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,3,2,'3lb')">3lb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,4,2,'4lb')">4lb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,5,2,'5lb')">5lb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,6,2,'6lb')">6lb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,7,2,'7lb')">7lb</a>
+						                   	</div>
+						                </div>
+					                </li>
+				            		<li>
+						                <h4> Wides </h4>
+						                <div class="match-scoring-enter">
+						                    <div class="extraButtons">
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,1,4,'wd')">wd</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,2,4,'wd+1')">1wd</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,3,4,'wd+2')">2wd</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,4,4,'wd+3')">3wd</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,5,4,'wd+4')">4wd</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,6,4,'wd+5')">5wd</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,7,4,'wd+6')">6wd</a>
+						                   	</div>
+						                </div>
+					                </li>
+				            		<li>
+						                <h4> No ball off the bat </h4>
+						                <div class="match-scoring-enter">
+						                    <div class="extraButtons">
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(1,1,3,'nb+1')">1nb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(2,1,3,'nb+2')">2nb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(3,1,3,'nb+3')">3nb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(4,1,3,'nb+4')">4nb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(5,1,3,'nb+5')">5nb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(6,1,3,'nb+6')">6nb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(7,1,3,'nb+7')">7nb</a>
+						                   	</div>
+						                </div>
+					                </li>
+				            		<li>
+						                <h4> No ball not off the bat </h4>
+						                <div class="match-scoring-enter">
+						                    <div class="extraButtons">
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,1,3,'nb')">nb</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,2,3,'nb+1')">nb+1</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,3,3,'nb+2')">nb+2</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,4,3,'nb+3')">nb+3</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,5,3,'nb+4')">nb+4</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,6,3,'nb+5')">nb+5</a>
+						                    	<a href="javascript:;" ng-click="choosingWicketRuns(0,7,3,'nb+6')">nb+6</a>
+						                   	</div>
+						                </div>
+					                </li>
+				                </ul>
+				                
+				            </div>
+					    	
+					    	<div class="formBtnsRow wicket-type-bottom-nav" style="margin-top: 20px;">
+						    	<input ng-click = "wicketsDone()" type="submit" value="Done" class="formBtn primarybutton">
+						    </div>
+					    	
+					    </div>
+					    
+					    
+				    	
+				    </div>
+					    
+					    
+			            
+			            
+			<div class="formBtnsRow wicket-type-bottom-nav">
+        <input type="button" value="Back" class="formBtn secondarybutton fl">
+        <input type="submit" value="Done" class="formBtn primarybutton">
+      </div>
+  </section>
+</div>
+</body>
+</html>

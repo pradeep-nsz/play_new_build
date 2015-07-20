@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<!-- Basic Page Needs
+  ================================================== -->
+<meta charset="utf-8">
+<title>Playinga</title>
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Mobile Specific Metas
+  ================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+
+<!-- Favicons
+	================================================== -->
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="css/font-awesome.css">
+<link rel="stylesheet" href="css/jquery.bxslider.css">
+<link rel="stylesheet" href="css/chosen.min.css">
+<link rel="stylesheet" href="css/jquery.countdown.css">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+</head>
+<body class="listing">
+<!-- #BeginLibraryItem "/Library/main-nav.lbi" -->
+<header class="navbar">
+  <div class="navbar-sec main-nav">
+    <div class="navbar-header">
+      <div class="mobile-header-right"> <img class="account-img account-img-on" src="images/post-profile-pic.jpg">
+        <div class="notification-mobile"> <i class="icon icon-bell-md icon-md notification-bel"></i>
+          <p class="notification-no">5</p>
+        </div>
+        <div class="search-images-mobile">
+          <input type="text" placeholder="Search by Keywords" class="form-control">
+          <i class="icon icon-search-md srchimg"></i></div>
+      </div>
+      <a class="navbar-brand" href="Library/Library/index.html"> <img src="images/logo-playinga.png" class="ful-logo" alt="Playinga"> <img src="images/mini-logo.png" class="mini-logo" alt="Playinga"> </a> </div>
+    <nav class="main-nav-sec">
+      <div class="main-menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown tournament"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-tournament-md icon-md"></i> Tournament</a>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="clear">
+                  <div class="left">
+                    <figure><img src="images/player1.jpg" alt=""><img src="images/player2.jpg" alt="" style="display:none"><img src="images/player3.jpg" alt="" style="display:none"><img src="images/player2.jpg" alt="" style="display:none"><img src="images/player3.jpg" alt="" style="display:none"></figure>
+                  </div>
+                  <div class="right">
+                    <ul>
+                      <li class="active"><a href="javascript:;"><i class="icon-soccer-sm icon-sm"></i> IPL</a></li>
+                      <li><a href="javascript:;"><i class="icon-baketball-sm icon-sm"></i> My Office Tournament</a></li>
+                      <li><a href="javascript:;"><i class="icon-table-tennis-sm icon-sm"></i> Chennai Super Kings</a></li>
+                      <li><a href="javascript:;"><i class="icon-badminton-sm icon-sm"></i> My Office Tournament</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="create"><a href="javascript:;"> Create Tournament</a></li>
+              <li class="seeall"><a href="javascript:;">View all</a></li>
+            </ul>
+          </li>
+          <li class="dropdown calendar"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-calendar-md icon-md"></i> Calendar</a>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="clear">
+                  <div class="right">
+                    <ul>
+                      <li><a href="javascript:;">
+                        <div><i class="icon-soccer-md icon-md"></i> <small>Mar 10, 6:30AM</small>
+                          <h5>Match names nome Here</h5>
+                          <p>CSK vs MI</p>
+                        </div>
+                        </a></li>
+                      <li><a href="javascript:;">
+                        <div><i class="icon-table-tennis-md icon-md"></i> <small>Mar 10, 6:30AM</small>
+                          <h5>Match names nome Here</h5>
+                          <p>CSK vs MI</p>
+                        </div>
+                        </a></li>
+                      <li><a href="javascript:;">
+                        <div><i class="icon-badminton-md icon-md"></i> <small>Mar 10, 6:30AM</small>
+                          <h5>Match names nome Here</h5>
+                          <p>CSK vs MI</p>
+                        </div>
+                        </a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="create"><a href="javascript:;"> Create Tournament</a></li>
+              <li class="seeall"><a href="javascript:;">View all</a></li>
+            </ul>
+          </li>
+          <li class="dropdown team"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-team-md icon-md"></i> Team </a>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="clear">
+                  <div class="left">
+                    <figure><img src="images/player1.jpg" alt=""><img src="images/player2.jpg" alt="" style="display:none"><img src="images/player3.jpg" alt="" style="display:none"><img src="images/player2.jpg" alt="" style="display:none"></figure>
+                  </div>
+                  <div class="right">
+                    <ul>
+                      <li class="active"><a href="javascript:;">IPL</a></li>
+                      <li><a href="javascript:;">My office tournament</a></li>
+                      <li><a href="javascript:;">Chennai super kings</a></li>
+                      <li><a href="javascript:;">My office tournament</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="create"><a href="javascript:;"> Create Tournament</a></li>
+              <li class="seeall"><a href="javascript:;">View all</a></li>
+            </ul>
+          </li>
+          <li class="search-menu">
+            <form class="navbar-form navbar-left no-margin" role="search">
+              <div class="form-group">
+                <div class="search-images"> <i class="icon icon-search-md icon-md srchimg"></i> <img src="images/search-dropdown.png" class="srchimg1">
+                  <div class="search-dropdown">
+                    <ul>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>all</p>
+                      </li>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>leading</p>
+                      </li>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>accounts</p>
+                      </li>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>contacts</p>
+                      </li>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>potentials</p>
+                      </li>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>campaigns</p>
+                      </li>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>forecasts</p>
+                      </li>
+                      <li>
+                        <input class="search-check" type="checkbox">
+                        <p>tasks</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <input class="form-control" placeholder="Search by Keywords" type="text">
+              </div>
+            </form>
+          </li>
+          <li class="dropdown notification-menu"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="icon icon-bell-md icon-md notification-bel"></i>
+            <p class="notification-no">5</p>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <h5>Notifications</h5>
+                <div class="scroll-pane">
+                  <ul>
+                    <li><a href="javascript:;">
+                      <figure class="image-circle-border-3"><img src="images/fan2.jpg" alt=""></figure>
+                      <div>
+                        <p><strong>Chennai super kings</strong> has started practice session in the ground.</p>
+                        <small>5min(s)</small>
+                        <button type="button" class="btn btn-success">Accept</button>
+                        <button type="button" class="btn btn-red">Accept</button>
+                      </div>
+                      </a></li>
+                  </ul>
+                  <h6>Past Notifications</h6>
+                  <ul>
+                    <li><a href="javascript:;">
+                      <figure class="image-circle-border-3"><img src="images/fan2.jpg" alt=""></figure>
+                      <div>
+                        <p><strong>Chennai super kings</strong> has started practice session in the ground.</p>
+                        <small>5min(s)</small>
+                        <button type="button" class="btn btn-success">Accept</button>
+                        <button type="button" class="btn btn-red">Accept</button>
+                      </div>
+                      </a></li>
+                    <li><a href="javascript:;">
+                      <figure><img src="images/fan2.jpg" alt=""></figure>
+                      <div>
+                        <p><strong>Chennai super kings</strong> has started practice session in the ground.</p>
+                        <small>5min(s)</small>
+                        <button type="button" class="btn btn-yellow">Close</button>
+                      </div>
+                      </a></li>
+                    <li><a href="javascript:;">
+                      <figure><img src="images/fan2.jpg" alt=""></figure>
+                      <div>
+                        <p><strong>Chennai super kings</strong> has started practice session in the ground.</p>
+                        <small>5min(s)</small>
+                        <button type="button" class="btn btn-yellow">Close</button>
+                      </div>
+                      </a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="seeall"><a href="javascript:;">See All</a></li>
+            </ul>
+          </li>
+          <li class="dropdown account-menu"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><img src="images/post-profile-pic.jpg" class="account-img"><img src="images/downarrow.png" class="account-img1"></a>
+            <ul class="dropdown-menu">
+              <li><a href="javascript:;"><i class="icon icon-setting-sm icon-sm"></i>account settings</a></li>
+              <li><a href="javascript:;"><i class="icon icon-help-sm"></i>help</a></li>
+              <li><a href="javascript:;"><i class="icon icon-bell-sm icon-sm"></i>notification</a></li>
+              <li><a href="javascript:;"><i class="icon icon-signout-sm icon-sm"></i>signout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+<a class="btn-scroll-up btn btn-sm" href="javascript:;"><i class="icon icon-arrow-top-md"></i></a><!-- #EndLibraryItem -->
+<div class="wrapper"><!-- #BeginLibraryItem "/Library/left-nav.lbi" -->
+  <div class="left-container">
+    <div class="text-center">
+      <figure class="image-square-border-1 image-hover inline-block"><img src="images/csk-logo.jpg" alt="Team"> </figure>
+    </div>
+    <div class="clear margin-B20 margin-T20">
+      <div class="clear join-team margin-B10">
+        <p>114 players</p>
+        <button class="btn btn-blue border-radius-25">Join Team</button>
+      </div>
+      <div class="clear follower-team">
+        <p>254 followers</p>
+        <button class="btn btn-yellow border-radius-25">Follow</button>
+      </div>
+    </div>
+    <div class="clear schedule-match margin-B20">
+      <button class="btn btn-success border-radius-25">Schedule Match</button>
+    </div>
+    <div class="profile-game-sec">
+      <ul class="profile-game profile-game-slide">
+        <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-tennis-md icon-md"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-volleyball-md icon-md"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-badminton-md icon-md"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-golf-md icon-md"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-table-tennis-md icon-md"></i></a></li>
+      </ul>
+    </div>
+    <div class="match-location">
+      <p>Pallavaram, Chennai, India, Tamil Nadu</p>
+    </div>
+    <div class="recent-form">
+      <h4 class="text-blue margin-B5">Recent form</h4>
+      <div class="profile-game-sec text-center">
+        <ul class="profile-game display-inline">
+          <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md text-green"></i></a></li>
+          <li><a href="javascript:;"><i class="icon icon-tennis-md icon-md text-green"></i></a></li>
+          <li><a href="javascript:;"><i class="icon icon-volleyball-md icon-md text-red"></i></a></li>
+          <li><a href="javascript:;"><i class="icon icon-badminton-md icon-md text-green"></i></a></li>
+          <li><a href="javascript:;"><i class="icon icon-golf-md icon-md text-red"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="follow-us">
+      <h4 class="text-blue margin-B5">Follow us on</h4>
+      <ul>
+        <li><a href="javascript:;"><i class="icon icon-facebook-sm"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-linkedin-sm"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-tumblr-sm"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-twitter-sm"></i></a></li>
+        <li><a href="javascript:;"><i class="icon icon-gplus-sm"></i></a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- #EndLibraryItem -->
+  <div class="right-container">
+    <div class="stick-menu-sec">
+      <div class="team-banner team-banner-on col-sm-12 col-xs-12 col-xxs-12">
+        <figure class="team-icons pull-left"> <img src="images/csk-logo.jpg" alt="" class="team-mobile border-radius-6"> <i class="icon icon-team-xlg icon-xlg team-browser"></i></figure>
+        <h1 class="pull-left">Chennai Super Kings</h1>
+        <figure class="teamcreate-img pull-right image-hover image-circle-3"> <img src="images/post-profile-pic.jpg" alt="Profile"> <i class="fa fa-angle-double-right"></i></figure>
+      </div>
+      <!-- #BeginLibraryItem "/Library/stick-nav.lbi" -->
+      <div class="col-lg-12 col-xxs-12 top-nav no-padding"> <a class="top-nav-trigger" href="javascript:;">Menu<span></span></a>
+        <ul class="nav nav-tabs fixed-tabs">
+          <li class="dropdown pull-right tabdrop hide"><a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle"><i class="glyphicon glyphicon-align-justify"></i> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+            </ul>
+          </li>
+          <li><a href="javascript:;"> <i class="icon icon-feed-lg icon-lg"></i> Feeds</a></li>
+          <li><a href="javascript:;"> <i class="icon icon-dashboard-md icon-lg"></i> dashboard</a></li>
+          <li><a href="javascript:;"> <i class="icon icon-team-lg icon-lg"></i> teams</a></li>
+          <li><a href="javascript:;"> <i class="icon icon-network-lg icon-lg"></i> network</a></li>
+          <li><a href="javascript:;"> <i class="icon icon-tournament-lg icon-lg"></i> tournament</a></li>
+          <li><a href="javascript:;"> <i class="icon icon-calendar-lg icon-lg"></i> calendar</a></li>
+        </ul>
+      </div>
+      <!-- #EndLibraryItem --></div>
+    <div class="col-sm-12 col-xs-12 col-xxs-12 mobile-wrapper">
+      <div class="clear margin-T20 margin-B20">
+        <div class="listing-head">
+          <div class="row">
+         <div class="col-sm-6 col-xxs-12">
+            <h3>Players</h3>
+            </div>
+            <div class="col-sm-6 col-xxs-12">
+              <div class="row form-group no-margin-bottom">
+              <div class="col-sm-12 col-xxs-12">
+                 <div class="inline-block pull-right margin-L10">
+                  <input name="text" class="form-control" placeholder="Search players" type="text">
+                  </div>
+<div class="btn-group pull-right"> <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"> -- All sports -- <span class="caret"></span> </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="javascript:;"><i class="icon-tennis-sm icon-sm"></i> Tennis</a></li>
+                    <li><a href="javascript:;"><i class="icon-soccer-sm icon-sm"></i> Football</a></li>
+                    <li><a href="javascript:;"><i class="icon-table-tennis-sm icon-sm"></i> Table Tennis</a></li>
+                    <li><a href="javascript:;"><i class="icon-golf-sm icon-sm"></i> Golf</a></li>
+                  </ul>
+                </div>
+                
+             
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul class="row player-listing">
+          <li class="col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+            <div>
+              <div class="clear"> <span class="label label-green">Caption</span> <i class="icon icon-edit-sm jersyedit"></i>
+                <div class="prelative inline-block">
+                  <figure class="image-circle-border-1 image-hover"> <img src="images/squad-member1.jpg" alt="Team"> </figure>
+                  <span class="player-no">108.</span></div>
+                <h4>(Ashwin)<br>
+                  Ashwin Sundaram</h4>
+                <p>29 Yrs, Male</p>
+              </div>
+              <div class="clear">
+                <div class="profile-game-sec">
+                  <ul class="profile-game display-inline list-sports-slide">
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-tennis-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-volleyball-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-badminton-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-golf-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-table-tennis-md icon-md"></i></a></li>
+                  </ul>
+                </div>
+                <div class="form-group no-margin-bottom role-edit-sec">
+                  <div class="col-md-12 col-xxs-12">
+                    <input type="text" placeholder="Jersy No" class="form-control" name="text">
+                  </div>
+                  <div class="col-md-12 col-xxs-12">
+                    <input type="text" placeholder="Role" class="form-control" name="text">
+                  </div>
+                  <div class="col-md-12 col-xxs-12 text-right">
+                    <button type="button" class="btn btn-link">Cancel</button>
+                    <button type="button" class="btn btn-blue">Ok</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+            <div>
+              <div class="clear"> <span class="label label-blue">Players</span> <i class="icon icon-edit-sm jersyedit"></i>
+                <div class="prelative inline-block">
+                  <figure class="image-circle-border-1 image-hover"> <img src="images/squad-member1.jpg" alt="Team"> </figure>
+                  <span class="player-no">108.</span></div>
+                <h4>(Ashwin)<br>
+                  Ashwin Sundaram</h4>
+                <p>29 Yrs, Male</p>
+              </div>
+              <div class="clear">
+                <div class="profile-game-sec">
+                  <ul class="profile-game display-inline list-sports-slide">
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-tennis-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-volleyball-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-badminton-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-golf-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-table-tennis-md icon-md"></i></a></li>
+                  </ul>
+                </div>
+                <div class="form-group no-margin-bottom role-edit-sec">
+                  <div class="col-md-12 col-xxs-12">
+                    <input type="text" placeholder="Jersy No" class="form-control" name="text">
+                  </div>
+                  <div class="col-md-12 col-xxs-12">
+                    <input type="text" placeholder="Role" class="form-control" name="text">
+                  </div>
+                  <div class="col-md-12 col-xxs-12 text-right">
+                    <button type="button" class="btn btn-link">Cancel</button>
+                    <button type="button" class="btn btn-blue">Ok</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 create-new">
+            <div>
+              <div class="clear">
+                <div class="prelative inline-block">
+                  <figure class="image-circle-border-1 image-hover"> <img src="images/profile-pic.jpg" alt="Team"> <i class="icon-plus-lg icon-lg"></i> </figure>
+                  </div>
+                   <button type="button" class="btn btn-blue invite">Invite Player to Team</button>
+              </div>
+            </div>
+          </li>
+          <li class="col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+            <div>
+            <div class="overlay">
+            <p class="margin-T5 italic">Invitation sent</p>
+              <button type="button" class="btn btn-red btn-sm border-radius-25">Revoke invitation</button>
+              <a href="javascript:;"><h4 class="text-blue margin-T5">(Ashwin)<br>
+                  Ashwin Sundaram</h4>
+                  </a>
+                <p>29 Yrs, Male</p>
+            </div>
+              <div class="clear">
+                <div class="prelative inline-block">
+                  <figure class="image-circle-border-1 image-hover"> <img src="images/squad-member1.jpg" alt="Team"> </figure>
+                  </div>
+                <h4 class="visibility-hidden">(Ashwin)<br>
+                  Ashwin Sundaram</h4>
+                <p class="visibility-hidden">29 Yrs, Male</p>
+              </div>
+              <div class="clear">
+                <div class="profile-game-sec">
+                  <ul class="profile-game display-inline list-sports-slide">
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-tennis-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-volleyball-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-badminton-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-golf-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-table-tennis-md icon-md"></i></a></li>
+                  </ul>
+                </div>
+               
+              </div>
+            </div>
+          </li>
+          
+          <li class="col-md-4 col-sm-6 col-xs-6 col-xxs-12">
+            <div>
+            <div class="overlay">
+            <p class="margin-T5 italic">Applied to join team</p>
+              <button type="button" class="btn btn-success btn-sm border-radius-25">Accept</button><button type="button" class="btn btn-red btn-sm border-radius-25">Reject</button>
+               <a href="javascript:;"><h4 class="text-blue margin-T5">(Ashwin)<br>
+                  Ashwin Sundaram</h4>
+                  </a>
+                <p>29 Yrs, Male</p>
+            </div>
+              <div class="clear">
+                <div class="prelative inline-block">
+                  <figure class="image-circle-border-1 image-hover"> <img src="images/squad-member1.jpg" alt="Team"> </figure>
+                  </div>
+                <h4 class="visibility-hidden">(Ashwin)<br>
+                  Ashwin Sundaram</h4>
+                <p class="visibility-hidden">29 Yrs, Male</p>
+              </div>
+              <div class="clear">
+                <div class="profile-game-sec">
+                  <ul class="profile-game display-inline list-sports-slide">
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-tennis-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-volleyball-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-badminton-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-golf-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-soccer-md icon-md"></i></a></li>
+                    <li><a href="javascript:;"><i class="icon icon-table-tennis-md icon-md"></i></a></li>
+                  </ul>
+                </div>
+         
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/libs/jquery-1.11.0.min.js"></script> 
+<script src="js/bootstrap/bootstrap.min.js"></script> 
+<script src="js/libs/jquery.nicescroll.min.js"></script> 
+<script src="js/libs/chosen.jquery.min.js"></script> 
+<script src="js/libs/bootstrap-filestyle.min.js"></script> 
+<script src="js/libs/moment-min.js"></script> 
+<script src="js/libs/bootstrap-datetimepicker.min.js"></script> 
+<script src="js/libs/jquery.bxslider.min.js"></script> 
+<script src="js/libs/jquery.countdown.js"></script> 
+<script src="js/custom.js"></script> 
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.timer-area').countdown({ until: new Date(2015, 2 - 1, 29)});
+	jQuery('.next-match').bxSlider({
+	 mode: 'horizontal',
+	 pager:false,
+	 responsive:true,
+	});
+});
+	</script>
+</body>
+</html>

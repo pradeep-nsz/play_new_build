@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <title>Playinga</title>
+        <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+    </head>
+    
+    <body>
+        
+        <div ng-controller="MatchIndex" class="site-wrapper">
+        
+            <header class="topBar"><a class="mainMenu" href="javascript:;"></a>
+                <a class="backBtn" href="index.html"></a>
+                <h1 class="header-title">
+	                <img src="img/spacer.gif" class="icon-sportType21 icon-cricket" alt=""/>
+	                 {{details.name}}
+                </h1>
+            </header>
+            
+            <nav class="main-navs threeNavs">
+	            <a href="javascript:;" class="active">
+	                <hr />
+	                Details
+	            </a>
+	            
+<!--                 scorecard.html?matchId={{details.match_id}}&tabNo={{details.tabNo}} -->
+                <a href="" class="{{details.tabNo == '2' ? 'hide' : ''}}">
+                	<hr />
+                    Scorecard 
+<!--                     {{details.tabNo == '2' ? 'hide' : '' }} -->
+                </a>
+                <a href="matchScoring.html?matchId={{details.match_id}}&tabNo={{details.tabNo}}" class="{{details.tabNo == '1' ? '' : 'hide'}}">
+                	<hr />
+                    Scoring 
+<!--                     {{details.tabNo == '1' && '' || 'hide'}} -->
+                </a>
+            </nav>
+            
+            <section class="contentSection match-summary-details">
+                
+                <div class="match-summary-details-teams">
+                    <div class="match-summary-details-teamLogo01">
+                        <div class="teamPlayers01 team1BdrClr {{details.play_type <= 1 && 'hide' || ''}}">
+                            <div class="player01"><img src="{{details.playerimage1}}" width="60" height="60" alt="{{details.playername1}}"></div>
+                            <div class="player02 {{details.playerimage2 == '' && 'hide' || ''}}"><img src="{{details.playerimage2}}" width="60" height="60" alt="{{pst.playername2}}"></div>
+                        </div>
+                        <div class="teamLogo team1BdrClr {{details.play_type > 1 && 'hide' || ''}}"><img src="{{details.playerimage1}}" alt="{{pst.playername1}}" /></div>
+                    </div>
+                    <div class="match-summary-details-teamLogo02">
+                        <div class="teamPlayers02 team2BdrClr {{details.play_type <= 1 && 'hide' || ''}}">
+                            <div class="player01"><img src="{{details.playerimage3}}" width="60" height="60" alt="{{details.playername2}}"></div>
+                            <div class="player02 {{details.playerimage4 == '' && 'hide' || ''}}"><img src="{{details.playerimage4}}" width="60" height="60" alt="{{pst.playername2}}"></div>
+                        </div>
+                        <div class="teamLogo team2BdrClr {{details.play_type > 1 && 'hide' || ''}}"><img src="{{details.playerimage3}}" alt="{{pst.playername2}}" /></div>
+                    </div>
+                    <div class="match-summary-details-desc">
+                        <h3 class="match-summary-details-leaguename {{details.tournament_name == '' && 'invisible' || ''}}">
+                            <img src="img/spacer.gif" class="icon-todayLeagueNameW" alt="" /> {{details.tournament_name}}
+                        </h3>
+                        <h2>
+                            {{details.playername1}}<br>
+                            <span>Vs</span><br>
+                            {{details.playername2}}
+                        </h2>
+                    </div>
+                    <div class="match-summary-date">
+                        <img src="img/spacer.gif" class="icon-calendarW" alt="" /> {{details.formattedDate | date:'dd-MM-yyyy'}}
+                        <span class="match-summary-overs"></span>
+                    </div>
+                </div>
+                <div class="match-summary-details-gMap">
+                    <div class="gMapHolder" id="googleMap"></div>
+                    <div class="match-summary-location">{{details.venue}}</div>
+                </div>
+            </section>
+        </div>
+        
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        
+        <script src="js/iscroll.js"></script>
+        <script type="text/javascript" src="js/general.js"></script>
+        <script type="text/javascript" src="js/matchIndex.js"></script>
+        <script>
+        	document.addEventListener("deviceready", onDeviceReady, false);
+        </script>
+    </body>
+</html>

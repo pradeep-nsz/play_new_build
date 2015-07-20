@@ -1,0 +1,661 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?-fag83b');
+	src:url('../fonts/icomoon.eot?#iefix-fag83b') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?-fag83b') format('truetype'),
+		url('../fonts/icomoon.woff?-fag83b') format('woff'),
+		url('../fonts/icomoon.svg?-fag83b#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-badminton-xlg:before {
+	content: "\e600";
+}
+.icon-basketball-xlg:before {
+	content: "\e601";
+}
+.icon-bell-xlg:before {
+	content: "\e602";
+}
+.icon-calendar-xlg:before {
+	content: "\e603";
+}
+.icon-createarrow-xlg:before {
+	content: "\e604";
+}
+.icon-cricket-xlg:before {
+	content: "\e605";
+}
+.icon-dashboard-xlg:before {
+	content: "\e606";
+}
+.icon-email-xlg:before {
+	content: "\e607";
+}
+.icon-fans-xlg:before {
+	content: "\e608";
+}
+.icon-feeds-xlg:before {
+	content: "\e609";
+}
+.icon-friends-xlg:before {
+	content: "\e60a";
+}
+.icon-golf-xlg:before {
+	content: "\e60b";
+}
+.icon-hockey-xlg:before {
+	content: "\e60c";
+}
+.icon-information-xlg:before {
+	content: "\e60d";
+}
+.icon-players-xlg:before {
+	content: "\e60e";
+}
+.icon-profile-xlg:before {
+	content: "\e60f";
+}
+.icon-profile1-xlg:before {
+	content: "\e610";
+}
+.icon-reject-xlg:before {
+	content: "\e611";
+}
+.icon-results-xlg:before {
+	content: "\e612";
+}
+.icon-sats-xlg:before {
+	content: "\e613";
+}
+.icon-scoreboard-xlg:before {
+	content: "\e614";
+}
+.icon-select-xlg:before {
+	content: "\e615";
+}
+.icon-soccer-xlg:before {
+	content: "\e616";
+}
+.icon-sort-xlg:before {
+	content: "\e617";
+}
+.icon-table-tennis-xlg:before {
+	content: "\e618";
+}
+.icon-team-xlg:before {
+	content: "\e619";
+}
+.icon-tennis-xlg:before {
+	content: "\e61a";
+}
+.icon-tournament-xlg:before {
+	content: "\e61b";
+}
+.icon-volleyball-xlg:before {
+	content: "\e61c";
+}
+.icon-arrow-bottom-lg:before {
+	content: "\e61d";
+}
+.icon-arrow-left-lg:before {
+	content: "\e61e";
+}
+.icon-arrow-right-lg:before {
+	content: "\e61f";
+}
+.icon-arrow-top-lg:before {
+	content: "\e620";
+}
+.icon-badminton-lg:before {
+	content: "\e621";
+}
+.icon-basketball-lg:before {
+	content: "\e622";
+}
+.icon-bell-lg:before {
+	content: "\e623";
+}
+.icon-calendar-lg:before {
+	content: "\e624";
+}
+.icon-camera-lg:before {
+	content: "\e625";
+}
+.icon-challenge-lg:before {
+	content: "\e626";
+}
+.icon-clock-lg:before {
+	content: "\e627";
+}
+.icon-close-lg:before {
+	content: "\e628";
+}
+.icon-createarrow-lg:before {
+	content: "\e629";
+}
+.icon-cricket-lg:before {
+	content: "\e62a";
+}
+.icon-dashboard-lg:before {
+	content: "\e62b";
+}
+.icon-delete-lg:before {
+	content: "\e62c";
+}
+.icon-edit-lg:before {
+	content: "\e62d";
+}
+.icon-email-lg:before {
+	content: "\e62e";
+}
+.icon-error-lg:before {
+	content: "\e62f";
+}
+.icon-facebook-lg:before {
+	content: "\e630";
+}
+.icon-fans-lg:before {
+	content: "\e631";
+}
+.icon-feed-lg:before {
+	content: "\e632";
+}
+.icon-friends-lg:before {
+	content: "\e633";
+}
+.icon-golf-lg:before {
+	content: "\e634";
+}
+.icon-gplus-lg:before {
+	content: "\e635";
+}
+.icon-help-lg:before {
+	content: "\e636";
+}
+.icon-hockey-lg:before {
+	content: "\e637";
+}
+.icon-information-lg:before {
+	content: "\e638";
+}
+.icon-link-lg:before {
+	content: "\e639";
+}
+.icon-linkedin-lg:before {
+	content: "\e63a";
+}
+.icon-minus-lg:before {
+	content: "\e63b";
+}
+.icon-network-lg:before {
+	content: "\e63c";
+}
+.icon-participants-lg:before {
+	content: "\e63d";
+}
+.icon-players-lg:before {
+	content: "\e63e";
+}
+.icon-plus-lg:before {
+	content: "\e63f";
+}
+.icon-profile-lg:before {
+	content: "\e640";
+}
+.icon-profile1-lg:before {
+	content: "\e641";
+}
+.icon-reject-lg:before {
+	content: "\e642";
+}
+.icon-results-lg:before {
+	content: "\e643";
+}
+.icon-sats-lg:before {
+	content: "\e644";
+}
+.icon-scoreboard-lg:before {
+	content: "\e645";
+}
+.icon-search-lg:before {
+	content: "\e646";
+}
+.icon-select-lg:before {
+	content: "\e647";
+}
+.icon-setting-lg:before {
+	content: "\e648";
+}
+.icon-signout-lg:before {
+	content: "\e649";
+}
+.icon-soccer-lg:before {
+	content: "\e64a";
+}
+.icon-sort-lg:before {
+	content: "\e64b";
+}
+.icon-sponsers-lg:before {
+	content: "\e64c";
+}
+.icon-standing-lg:before {
+	content: "\e64d";
+}
+.icon-success-lg:before {
+	content: "\e64e";
+}
+.icon-table-tennis-lg:before {
+	content: "\e64f";
+}
+.icon-team-lg:before {
+	content: "\e650";
+}
+.icon-tennis-lg:before {
+	content: "\e651";
+}
+.icon-tick-bx-lg:before {
+	content: "\e652";
+}
+.icon-tournament-lg:before {
+	content: "\e653";
+}
+.icon-tumblr-lg:before {
+	content: "\e654";
+}
+.icon-twitter-lg:before {
+	content: "\e655";
+}
+.icon-upload-lg:before {
+	content: "\e656";
+}
+.icon-video-lg:before {
+	content: "\e657";
+}
+.icon-volleyball-lg:before {
+	content: "\e658";
+}
+.icon-warning-lg:before {
+	content: "\e659";
+}
+.icon-arrow-bottom-md:before {
+	content: "\e65a";
+}
+.icon-arrow-left-md:before {
+	content: "\e65b";
+}
+.icon-arrow-right-md:before {
+	content: "\e65c";
+}
+.icon-arrow-top-md:before {
+	content: "\e65d";
+}
+.icon-badminton-md:before {
+	content: "\e65e";
+}
+.icon-baketball-md:before {
+	content: "\e65f";
+}
+.icon-bell-md:before {
+	content: "\e660";
+}
+.icon-calendar-md:before {
+	content: "\e661";
+}
+.icon-camera-md:before {
+	content: "\e662";
+}
+.icon-challenge-md:before {
+	content: "\e663";
+}
+.icon-clock-md:before {
+	content: "\e664";
+}
+.icon-close-md:before {
+	content: "\e665";
+}
+.icon-createarrow-md:before {
+	content: "\e666";
+}
+.icon-cricket-md:before {
+	content: "\e667";
+}
+.icon-dashboard-md:before {
+	content: "\e668";
+}
+.icon-delete-md:before {
+	content: "\e669";
+}
+.icon-edit-md:before {
+	content: "\e66a";
+}
+.icon-email-md:before {
+	content: "\e66b";
+}
+.icon-error-md:before {
+	content: "\e66c";
+}
+.icon-facebook-md:before {
+	content: "\e66d";
+}
+.icon-fans-md:before {
+	content: "\e66e";
+}
+.icon-feed-md:before {
+	content: "\e66f";
+}
+.icon-friends-md:before {
+	content: "\e670";
+}
+.icon-golf-md:before {
+	content: "\e671";
+}
+.icon-gplus-md:before {
+	content: "\e672";
+}
+.icon-help-md:before {
+	content: "\e673";
+}
+.icon-hockey-md:before {
+	content: "\e674";
+}
+.icon-information-md:before {
+	content: "\e675";
+}
+.icon-link-md:before {
+	content: "\e676";
+}
+.icon-linkedin-md:before {
+	content: "\e677";
+}
+.icon-minus-md:before {
+	content: "\e678";
+}
+.icon-network-md:before {
+	content: "\e679";
+}
+.icon-participants-md:before {
+	content: "\e67a";
+}
+.icon-players-md:before {
+	content: "\e67b";
+}
+.icon-plus-md:before {
+	content: "\e67c";
+}
+.icon-profile-md:before {
+	content: "\e67d";
+}
+.icon-profile1-md:before {
+	content: "\e67e";
+}
+.icon-reject-md:before {
+	content: "\e67f";
+}
+.icon-results-md:before {
+	content: "\e680";
+}
+.icon-sats-md:before {
+	content: "\e681";
+}
+.icon-scoreboard-md:before {
+	content: "\e682";
+}
+.icon-search-md:before {
+	content: "\e683";
+}
+.icon-select-md:before {
+	content: "\e684";
+}
+.icon-setting-md:before {
+	content: "\e685";
+}
+.icon-signout-md:before {
+	content: "\e686";
+}
+.icon-soccer-md:before {
+	content: "\e687";
+}
+.icon-sort-md:before {
+	content: "\e688";
+}
+.icon-sponsers-md:before {
+	content: "\e689";
+}
+.icon-standing-md:before {
+	content: "\e68a";
+}
+.icon-success-md:before {
+	content: "\e68b";
+}
+.icon-table-tennis-md:before {
+	content: "\e68c";
+}
+.icon-team-md:before {
+	content: "\e68d";
+}
+.icon-tennis-md:before {
+	content: "\e68e";
+}
+.icon-tick-bx-md:before {
+	content: "\e68f";
+}
+.icon-tournament-md:before {
+	content: "\e690";
+}
+.icon-tumblr-md:before {
+	content: "\e691";
+}
+.icon-twitter-md:before {
+	content: "\e692";
+}
+.icon-upload-md:before {
+	content: "\e693";
+}
+.icon-video-md:before {
+	content: "\e694";
+}
+.icon-volleyball-md:before {
+	content: "\e695";
+}
+.icon-warning-md:before {
+	content: "\e696";
+}
+.icon-arrow-bottom-sm:before {
+	content: "\e697";
+}
+.icon-arrow-left-sm:before {
+	content: "\e698";
+}
+.icon-arrow-right-sm:before {
+	content: "\e699";
+}
+.icon-arrow-top-sm:before {
+	content: "\e69a";
+}
+.icon-badminton-sm:before {
+	content: "\e69b";
+}
+.icon-baketball-sm:before {
+	content: "\e69c";
+}
+.icon-bell-sm:before {
+	content: "\e69d";
+}
+.icon-calendar-sm:before {
+	content: "\e69e";
+}
+.icon-camera-sm:before {
+	content: "\e69f";
+}
+.icon-challenge-sm:before {
+	content: "\e6a0";
+}
+.icon-clock-sm:before {
+	content: "\e6a1";
+}
+.icon-close-sm:before {
+	content: "\e6a2";
+}
+.icon-createarrow-sm:before {
+	content: "\e6a3";
+}
+.icon-cricket-sm:before {
+	content: "\e6a4";
+}
+.icon-dashboard-sm:before {
+	content: "\e6a5";
+}
+.icon-delete-sm:before {
+	content: "\e6a6";
+}
+.icon-edit-sm:before {
+	content: "\e6a7";
+}
+.icon-email-sm:before {
+	content: "\e6a8";
+}
+.icon-error-sm:before {
+	content: "\e6a9";
+}
+.icon-facebook-sm:before {
+	content: "\e6aa";
+}
+.icon-fans-sm:before {
+	content: "\e6ab";
+}
+.icon-feed-sm:before {
+	content: "\e6ac";
+}
+.icon-friends-sm:before {
+	content: "\e6ad";
+}
+.icon-golf-sm:before {
+	content: "\e6ae";
+}
+.icon-gplus-sm:before {
+	content: "\e6af";
+}
+.icon-help-sm:before {
+	content: "\e6b0";
+}
+.icon-hockey-sm:before {
+	content: "\e6b1";
+}
+.icon-information-sm:before {
+	content: "\e6b2";
+}
+.icon-link-sm:before {
+	content: "\e6b3";
+}
+.icon-linkedin-sm:before {
+	content: "\e6b4";
+}
+.icon-minus-sm:before {
+	content: "\e6b5";
+}
+.icon-network-sm:before {
+	content: "\e6b6";
+}
+.icon-participants-sm:before {
+	content: "\e6b7";
+}
+.icon-players-sm:before {
+	content: "\e6b8";
+}
+.icon-plus-sm:before {
+	content: "\e6b9";
+}
+.icon-profile-sm:before {
+	content: "\e6ba";
+}
+.icon-profile1-sm:before {
+	content: "\e6bb";
+}
+.icon-reject-sm:before {
+	content: "\e6bc";
+}
+.icon-results-sm:before {
+	content: "\e6bd";
+}
+.icon-sats-sm:before {
+	content: "\e6be";
+}
+.icon-scoreboard-sm:before {
+	content: "\e6bf";
+}
+.icon-search-sm:before {
+	content: "\e6c0";
+}
+.icon-select-sm:before {
+	content: "\e6c1";
+}
+.icon-setting-sm:before {
+	content: "\e6c2";
+}
+.icon-signout-sm:before {
+	content: "\e6c3";
+}
+.icon-soccer-sm:before {
+	content: "\e6c4";
+}
+.icon-sort-sm:before {
+	content: "\e6c5";
+}
+.icon-sponsers-sm:before {
+	content: "\e6c6";
+}
+.icon-standing-sm:before {
+	content: "\e6c7";
+}
+.icon-success-sm:before {
+	content: "\e6c8";
+}
+.icon-table-tennis-sm:before {
+	content: "\e6c9";
+}
+.icon-team-sm:before {
+	content: "\e6ca";
+}
+.icon-tennis-sm:before {
+	content: "\e6cb";
+}
+.icon-tick-bx-sm:before {
+	content: "\e6cc";
+}
+.icon-tournament-sm:before {
+	content: "\e6cd";
+}
+.icon-tumblr-sm:before {
+	content: "\e6ce";
+}
+.icon-twitter-sm:before {
+	content: "\e6cf";
+}
+.icon-upload-sm:before {
+	content: "\e6d0";
+}
+.icon-video-sm:before {
+	content: "\e6d1";
+}
+.icon-volleyball-sm:before {
+	content: "\e6d2";
+}
+.icon-warning-sm:before {
+	content: "\e6d3";
+}
